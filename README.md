@@ -6,8 +6,9 @@ With tenant capabilities, it allows you to create content for a number of sites 
 
 ## TODO
 
-- [ ] Implement models for CMS
+- [x] Implement models for CMS
 - [ ] Implement multi tenant structure
+- [ ] Move billing to tenants
 - [ ] Implement audit logs
 - [ ] Implement flags
 - [ ] Implement content creation with statuses, types and workflows

@@ -25,7 +25,7 @@ export async function DELETE(
     }
 
     // Delete the post.
-    await db.post.delete({
+    await db.content.delete({
       where: {
         id: params.postId as string,
       },
@@ -60,7 +60,7 @@ export async function PATCH(
 
     // Update the post.
     // TODO: Implement sanitization for content.
-    await db.post.update({
+    await db.content.update({
       where: {
         id: params.postId,
       },
@@ -82,7 +82,7 @@ export async function PATCH(
 
 async function verifyCurrentUserHasAccessToPost(postId: string) {
   const session = await getServerSession(authOptions)
-  const count = await db.post.count({
+  const count = await db.content.count({
     where: {
       id: postId,
       authorId: session?.user.id,
