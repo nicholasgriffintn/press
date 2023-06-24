@@ -54,7 +54,6 @@ model User {
 
   accounts Account[]
   sessions Session[]
-  Content  Content[]
 
   stripeCustomerId       String?       @unique @map(name: "stripe_customer_id")
   stripeSubscriptionId   String?       @unique @map(name: "stripe_subscription_id")
@@ -157,7 +156,7 @@ model TenantUser {
   createdAt       DateTime @default(now()) @map(name: "created_at")
   updatedAt       DateTime @default(now()) @map(name: "updated_at")
   createdBy       String   @map(name: "created_by")
-  updatedBy       String   @map(name: "updated_by")
+  updatedBy       String?  @map(name: "updated_by")
 
   tenant Tenant @relation(fields: [tenantId], references: [id])
   user   User   @relation(fields: [userId], references: [id])
@@ -444,7 +443,7 @@ model Template {
   createdAt       DateTime      @default(now()) @map(name: "created_at")
   updatedAt       DateTime      @default(now()) @map(name: "updated_at")
   createdBy       String        @map(name: "created_by")
-  updatedBy       String        @map(name: "updated_by")
+  updatedBy       String?       @map(name: "updated_by")
 
   site    Site      @relation(fields: [siteId], references: [id])
   Content Content[]
@@ -544,7 +543,7 @@ model Content {
   seo              Json?
   authorId         String
   siteId           String
-  featuredImageUrl String        @db.VarChar(1024)
+  featuredImageUrl String?       @db.VarChar(1024)
   status           ContentStatus @relation(fields: [contentStatusId], references: [id])
   type             ContentType   @relation(fields: [contentTypeId], references: [id])
 
@@ -552,14 +551,14 @@ model Content {
   Compliance   Compliance[]
   notes        Note[]
   tasks        Task[]
-  template     Template     @relation(fields: [templateId], references: [id])
-  templateId   String
-  contributors User[]
+  template     Template?     @relation(fields: [templateId], references: [id])
+  templateId   String?
+  contributors Json
 
   createdAt       DateTime @default(now()) @map(name: "created_at")
   updatedAt       DateTime @default(now()) @map(name: "updated_at")
   createdBy       String   @map(name: "created_by")
-  updatedBy       String   @map(name: "updated_by")
+  updatedBy       String?  @map(name: "updated_by")
   contentStatusId String
   contentTypeId   String
 
