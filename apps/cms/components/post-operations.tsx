@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
+import * as React from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation"
-import { Post } from "@prisma/client"
+import { Content } from "@prisma/client"
 
 import {
   AlertDialog,
@@ -42,7 +42,7 @@ async function deletePost(postId: string) {
 }
 
 interface PostOperationsProps {
-  post: Pick<Post, "id" | "title">
+  post: Pick<Content, "id" | "title">
 }
 
 export function PostOperations({ post }: PostOperationsProps) {
