@@ -30,7 +30,6 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
-  @@index([id, userId])
   @@map(name: "accounts")
 }
 
@@ -41,7 +40,6 @@ model Session {
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([id, userId])
   @@map(name: "sessions")
 }
 
@@ -67,7 +65,6 @@ model User {
   Notification           Notification? @relation(fields: [notificationId], references: [id])
   notificationId         String?
 
-  @@index([id])
   @@map(name: "users")
 }
 
@@ -77,7 +74,6 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-  @@index([identifier])
   @@map(name: "verification_tokens")
 }
 
@@ -93,7 +89,6 @@ model Notification {
 
   site Site @relation(fields: [siteId], references: [id])
 
-  @@index([id, siteId])
   @@map(name: "notifications")
 }
 
@@ -108,7 +103,6 @@ model AuditLog {
   values         Json?
   timestamp      DateTime @default(now()) @map(name: "created_at")
 
-  @@index([id])
   @@map(name: "auditlogs")
 }
 
@@ -122,7 +116,6 @@ model Provider {
   Tenant    Tenant[]
 
   @@unique([name])
-  @@index([id, name])
   @@map(name: "providers")
 }
 
@@ -147,7 +140,6 @@ model Tenant {
   File     File[]
 
   @@unique([name, url])
-  @@index([id, url])
   @@map(name: "tenants")
 }
 
@@ -170,7 +162,6 @@ model TenantUser {
   tenant Tenant @relation(fields: [tenantId], references: [id])
   user   User   @relation(fields: [userId], references: [id])
 
-  @@index([id, userId, tenantId])
   @@map(name: "tenantusers")
 }
 
@@ -191,7 +182,6 @@ model Device {
   tenant Tenant @relation(fields: [tenantId], references: [id])
   user   User   @relation(fields: [userId], references: [id])
 
-  @@index([id, tenantId, userId])
   @@map(name: "devices")
 }
 
@@ -199,8 +189,8 @@ model File {
   id          String   @id @default(cuid())
   name        String   @db.VarChar(255)
   sizeInBytes Int
-  privateUrl  String   @unique @db.VarChar(1024)
-  publicUrl   String   @unique @db.VarChar(1024)
+  privateUrl  String   @db.VarChar(1024)
+  publicUrl   String   @db.VarChar(1024)
   tenantId    String
   createdAt   DateTime @default(now()) @map(name: "created_at")
   updatedAt   DateTime @default(now()) @map(name: "updated_at")
@@ -209,7 +199,6 @@ model File {
 
   tenant Tenant @relation(fields: [tenantId], references: [id])
 
-  @@index([id, tenantId])
   @@map(name: "files")
 }
 
@@ -258,7 +247,6 @@ model Site {
   Workflow      Workflow[]
 
   @@unique([name, url])
-  @@index([id, tenantId])
   @@map(name: "sites")
 }
 
@@ -279,7 +267,6 @@ model Setting {
 
   site Site @relation(fields: [siteId], references: [id])
 
-  @@index([id, siteId])
   @@map(name: "settings")
 }
 
@@ -300,7 +287,6 @@ model Flag {
 
   site Site @relation(fields: [siteId], references: [id])
 
-  @@index([id, siteId])
   @@map(name: "falgs")
 }
 
@@ -318,7 +304,6 @@ model Integrator {
 
   site Site @relation(fields: [siteId], references: [id])
 
-  @@index([id, siteId])
   @@map(name: "integrators")
 }
 
@@ -341,7 +326,6 @@ model CloudFlare {
 
   site Site @relation(fields: [siteId], references: [id])
 
-  @@index([id, siteId])
   @@map(name: "cloudflare")
 }
 
@@ -358,7 +342,6 @@ model Vercel {
 
   site Site @relation(fields: [siteId], references: [id])
 
-  @@index([id, siteId])
   @@map(name: "vercel")
 }
 
@@ -381,7 +364,6 @@ model Deployment {
 
   site Site @relation(fields: [siteId], references: [id])
 
-  @@index([id, siteId])
   @@map(name: "deployment")
 }
 
@@ -405,7 +387,6 @@ model Form {
   site     Site       @relation(fields: [siteId], references: [id])
   Response Response[]
 
-  @@index([id, siteId])
   @@map(name: "forms")
 }
 
@@ -422,7 +403,6 @@ model Response {
   site   Site   @relation(fields: [siteId], references: [id])
   formId String
 
-  @@index([id, siteId])
   @@map(name: "responses")
 }
 
@@ -450,7 +430,6 @@ model CustomField {
   ContentType   ContentType? @relation(fields: [contentTypeId], references: [id])
   contentTypeId String?
 
-  @@index([id, siteId])
   @@map(name: "customfields")
 }
 
@@ -470,7 +449,6 @@ model Template {
   site    Site      @relation(fields: [siteId], references: [id])
   Content Content[]
 
-  @@index([id, siteId])
   @@map(name: "templates")
 }
 
@@ -488,7 +466,6 @@ model Task {
   Content   Content? @relation(fields: [contentId], references: [id])
   contentId String?
 
-  @@index([id, siteId])
   @@map(name: "tasks")
 }
 
@@ -506,7 +483,6 @@ model Note {
   Content   Content? @relation(fields: [contentId], references: [id])
   contentId String?
 
-  @@index([id, siteId])
   @@map(name: "notes")
 }
 
@@ -530,7 +506,6 @@ model ContentStatus {
   site    Site      @relation(fields: [siteId], references: [id])
   Content Content[]
 
-  @@index([id, siteId])
   @@map(name: "contentstatuses")
 }
 
@@ -550,7 +525,6 @@ model ContentType {
   site    Site      @relation(fields: [siteId], references: [id])
   Content Content[]
 
-  @@index([id, siteId])
   @@map(name: "contenttypes")
 }
 
@@ -589,7 +563,6 @@ model Content {
   contentStatusId String
   contentTypeId   String
 
-  @@index([id, siteId, authorId])
   @@map(name: "posts")
 }
 
@@ -637,7 +610,6 @@ model Workflow {
 
   site Site @relation(fields: [siteId], references: [id])
 
-  @@index([id, siteId])
   @@map(name: "workflows")
 }
 
@@ -674,6 +646,5 @@ model Compliance {
   site    Site    @relation(fields: [siteId], references: [id])
   content Content @relation(fields: [contentId], references: [id])
 
-  @@index([id, siteId])
   @@map(name: "compliances")
 }
