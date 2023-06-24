@@ -1,36 +1,29 @@
-# Turborepo starter
+# Press
 
-This is an official starter Turborepo.
+Press aims to be a universal CMS that you can use for creating content for your site.
 
-## Using this example
+With tenant capabilities, it allows you to create content for a number of sites with a multi-user, multi-site structure. Alongside that, it fully supports site deployments and site management with CloudFlare and Vercel.
 
-Run the following command:
+## TODO
 
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- [ ] Implement models for CMS
+- [ ] Implement multi tenant structure
+- [ ] Implement audit logs
+- [ ] Implement flags
+- [ ] Implement content creation with statuses, types and workflows
+  - [ ] Implement simple content editor
+  - [ ] Implement custom templates with custom fields
+- [ ] Implement sites with deployment and management
+  - [ ] Implement CloudFlare
+  - [ ] Implement Vercel
+- [ ] Implement forms
+- [ ] Implement content upload
+- [ ] Implement user configuration
+  - [ ] Implement sign in and device tracking
+  - [ ] Implement delete account and site
+  - [ ] Implement SAR
+- [ ] Implement external integrations
+- [ ] Implement content compliance tracking
 
 ### Build
 
@@ -52,12 +45,9 @@ pnpm dev
 
 ### Remote Caching
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following command:
 
 ```
-cd my-turborepo
 npx turbo login
 ```
 
@@ -68,14 +58,3 @@ Next, you can link your Turborepo to your Remote Cache by running the following 
 ```
 npx turbo link
 ```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
