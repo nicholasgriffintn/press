@@ -19,6 +19,7 @@ jobs:
       NEXTAUTH_SECRET: super-secret-ci-secret
       GITHUB_CLIENT_ID: a-github-client-id
       GITHUB_ACCESS_TOKEN: a-github-access-token
+      GITHUB_CLIENT_SECRET: ${{ vars.GITHUB_TOKEN }}
       DATABASE_URL: "mysql://root:root@localhost:3306/press?schema=public"
       SMTP_FROM: press@nicholasgriffin.dev
       RESEND_API_TOKEN: a-resend-api-token
