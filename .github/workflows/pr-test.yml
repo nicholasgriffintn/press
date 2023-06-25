@@ -14,6 +14,17 @@ jobs:
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: super-secret-ci-secret
+      GITHUB_CLIENT_ID: a-github-client-id
+      GITHUB_ACCESS_TOKEN: a-github-access-token
+      DATABASE_URL: "mysql://root:root@localhost:3306/press?schema=public"
+      SMTP_FROM: press@nicholasgriffin.dev
+      RESEND_API_TOKEN: a-resend-api-token
+      STRIPE_API_KEY: a-stripe-api-key
+      STRIPE_WEBHOOK_SECRET: a-stripe-webhook-secret
+      STRIPE_PRO_MONTHLY_PLAN_ID: a pro-plan-id
 
     steps:
       - name: Check out code
