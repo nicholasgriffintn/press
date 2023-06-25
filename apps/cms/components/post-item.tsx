@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { PostOperations } from "@/components/post-operations"
 
 interface PostItemProps {
-  post: Pick<Content, "id" | "title" | "published" | "createdAt">
+  post: Content
 }
 
 export function PostItem({ post }: PostItemProps) {
@@ -21,7 +21,8 @@ export function PostItem({ post }: PostItemProps) {
         </Link>
         <div>
           <p className="text-sm text-muted-foreground">
-            {formatDate(post.createdAt?.toDateString())}
+            Created: {formatDate(post.createdAt?.toDateString())} - Type:{" "}
+            {post.type.title} - Status: {post.status.name}
           </p>
         </div>
       </div>

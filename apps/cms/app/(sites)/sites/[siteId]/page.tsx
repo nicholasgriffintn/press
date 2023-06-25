@@ -1,5 +1,6 @@
+import Link from "next/link"
 import { notFound, redirect } from "next/navigation"
-import { Site, User } from "@prisma/client"
+import { Site, User, ContentType } from "@prisma/client"
 
 import { authOptions } from "@/lib/auth"
 import { db } from "@/lib/db"
@@ -65,6 +66,16 @@ export default async function SitesPage({ params }: SitesPageProps) {
       title: true,
       published: true,
       createdAt: true,
+      type: {
+        select: {
+          title: true,
+        },
+      },
+      status: {
+        select: {
+          name: true,
+        },
+      },
     },
     orderBy: {
       updatedAt: "desc",
@@ -77,6 +88,11 @@ export default async function SitesPage({ params }: SitesPageProps) {
         heading={site.name}
         text={site.description || "Welcome to your site's dashboard!"}
       >
+        <Link href={`/sites/${site.id}/content/types`}>Content Types</Link>
+        <Link href={`/sites/${site.id}/content/statuses`}>
+          Content Statuses
+        </Link>
+        <Link href={`/sites/${site.id}/settings`}>Settings</Link>
         <PostCreateButton
           contentType={contentType}
           contentStatus={contentStatus}
@@ -86,6 +102,9 @@ export default async function SitesPage({ params }: SitesPageProps) {
       <div>
         {posts?.length ? (
           <div className="divide-y divide-border rounded-md border">
+            <div className="flex items-center justify-between p-4">
+              <h2>Content</h2>
+            </div>
             {posts.map((post) => (
               <PostItem key={post.id} post={post} />
             ))}
