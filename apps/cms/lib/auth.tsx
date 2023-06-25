@@ -1,14 +1,15 @@
+import { Email } from "@/emails/magic-link"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { NextAuthOptions } from "next-auth"
 import EmailProvider from "next-auth/providers/email"
 import GitHubProvider from "next-auth/providers/github"
-import { Client } from "postmark"
+import { Resend } from "resend"
 
 import { env } from "@/env.mjs"
 import { siteConfig } from "@/config/site"
 import { db } from "@/lib/db"
 
-const postmarkClient = new Client(env.POSTMARK_API_TOKEN)
+const resend = new Resend(env.RESEND_API_TOKEN)
 
 export const authOptions: NextAuthOptions = {
   // huh any! I know.
@@ -38,34 +39,14 @@ export const authOptions: NextAuthOptions = {
           },
         })
 
-        const templateId = user?.emailVerified
-          ? env.POSTMARK_SIGN_IN_TEMPLATE
-          : env.POSTMARK_ACTIVATION_TEMPLATE
-        if (!templateId) {
-          throw new Error("Missing template id")
-        }
-
-        const result = await postmarkClient.sendEmailWithTemplate({
-          TemplateId: parseInt(templateId),
-          To: identifier,
-          From: provider.from as string,
-          TemplateModel: {
-            action_url: url,
-            product_name: siteConfig.name,
-          },
-          Headers: [
-            {
-              // Set this to prevent Gmail from threading emails.
-              // See https://stackoverflow.com/questions/23434110/force-emails-not-to-be-grouped-into-conversations/25435722.
-              Name: "X-Entity-Ref-ID",
-              Value: new Date().getTime() + "",
-            },
-          ],
+        await resend.sendEmail({
+          from: provider.from as string,
+          to: identifier,
+          subject: user?.emailVerified
+            ? `Welcome to ${siteConfig.name}!`
+            : `Sign into ${siteConfig.name}`,
+          react: <Email url={url} />,
         })
-
-        if (result.ErrorCode) {
-          throw new Error(result.Message)
-        }
       },
     }),
   ],
