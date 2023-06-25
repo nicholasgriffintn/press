@@ -21,6 +21,18 @@
   color: inherit;
 }
 
+.dark .link-tool__content--rendered {
+  background: theme('colors.muted.DEFAULT');
+  color: inherit;
+	border-color: theme('colors.border');
+}
+
+.link-tool__image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .dark .ce-popover--item-icon,
 .dark .ce-conversion-tool__icon {
 	background-color: theme('colors.muted.DEFAULT');

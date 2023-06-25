@@ -1,19 +1,13 @@
-import { redirect } from "next/navigation";
+import { redirect } from "next/navigation"
 
-
-
-import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { getCurrentUser } from "@/lib/session";
-import { EmptyPlaceholder } from "@/components/empty-placeholder";
-import { DashboardHeader } from "@/components/header";
-import { DashboardShell } from "@/components/shell";
-import { SiteCreateButton } from "@/components/site-create-button";
-import { SiteItem } from "@/components/site-item";
-
-
-
-
+import { authOptions } from "@/lib/auth"
+import { db } from "@/lib/db"
+import { getCurrentUser } from "@/lib/session"
+import { EmptyPlaceholder } from "@/components/empty-placeholder"
+import { DashboardHeader } from "@/components/header"
+import { DashboardShell } from "@/components/shell"
+import { SiteCreateButton } from "@/components/site-create-button"
+import { SiteItem } from "@/components/site-item"
 
 export const metadata = {
   title: "Dashboard",

@@ -40,3 +40,5 @@ next-env.d.ts
 .contentlayer
 
 .react-email
+
+public/uploads

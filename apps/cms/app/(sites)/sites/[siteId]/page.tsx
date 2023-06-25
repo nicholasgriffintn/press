@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { notFound, redirect } from "next/navigation"
-import { Site, User, ContentType } from "@prisma/client"
+import { ContentType, Site, User } from "@prisma/client"
 
 import { authOptions } from "@/lib/auth"
 import { db } from "@/lib/db"
