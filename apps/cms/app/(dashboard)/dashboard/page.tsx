@@ -58,7 +58,7 @@ export default async function DashboardPage() {
         {sites?.length ? (
           <div className="divide-y divide-border rounded-md border">
             {sites.map((site) => {
-              return <SiteItem site={site} />
+              return <SiteItem key={site.id} site={site} />
             })}
           </div>
         ) : (
