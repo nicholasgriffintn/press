@@ -1,19 +1,13 @@
-import { redirect } from "next/navigation";
+import { redirect } from "next/navigation"
 
-
-
-import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { getCurrentUser } from "@/lib/session";
-import { EmptyPlaceholder } from "@/components/empty-placeholder";
-import { DashboardHeader } from "@/components/header";
-import { PostCreateButton } from "@/components/post-create-button";
-import { PostItem } from "@/components/post-item";
-import { DashboardShell } from "@/components/shell";
-
-
-
-
+import { authOptions } from "@/lib/auth"
+import { db } from "@/lib/db"
+import { getCurrentUser } from "@/lib/session"
+import { EmptyPlaceholder } from "@/components/empty-placeholder"
+import { DashboardHeader } from "@/components/header"
+import { DashboardShell } from "@/components/shell"
+import { SiteCreateButton } from "@/components/site-create-button"
+import { SiteItem } from "@/components/site-item"
 
 export const metadata = {
   title: "Dashboard",
@@ -26,41 +20,57 @@ export default async function DashboardPage() {
     redirect(authOptions?.pages?.signIn || "/login")
   }
 
-  const posts = await db.content.findMany({
+  const users = await db.user.findMany({
     where: {
-      authorId: user.id,
+      id: user.id,
     },
-    select: {
-      id: true,
-      title: true,
-      published: true,
-      createdAt: true,
-    },
-    orderBy: {
-      updatedAt: "desc",
+    include: {
+      TenantUser: {
+        include: {
+          tenant: {
+            include: {
+              Site: true,
+            },
+          },
+        },
+      },
     },
   })
 
+  const sites = users.reduce((prev, next) => {
+    const site = next.TenantUser.map(
+      (tenantUser) => tenantUser.tenant.Site
+    ).flat()
+
+    if (site.length) {
+      return [...site, ...prev]
+    }
+
+    return prev
+  }, [])
+
   return (
     <DashboardShell>
-      <DashboardHeader heading="Posts" text="Create and manage posts.">
-        <PostCreateButton />
+      <DashboardHeader heading="Dashboard" text="Select a site to manage.">
+        <SiteCreateButton />
       </DashboardHeader>
       <div>
-        {posts?.length ? (
+        {sites?.length ? (
           <div className="divide-y divide-border rounded-md border">
-            {posts.map((post) => (
-              <PostItem key={post.id} post={post} />
-            ))}
+            {sites.map((site) => {
+              return <SiteItem site={site} />
+            })}
           </div>
         ) : (
           <EmptyPlaceholder>
-            <EmptyPlaceholder.Icon name="post" />
-            <EmptyPlaceholder.Title>No posts created</EmptyPlaceholder.Title>
+            <EmptyPlaceholder.Icon name="settings" />
+            <EmptyPlaceholder.Title>
+              You don&apos;t have any sites yet!
+            </EmptyPlaceholder.Title>
             <EmptyPlaceholder.Description>
-              You don&apos;t have any posts yet. Start creating content.
+              Get another user to invite you to one, or create your own below:
             </EmptyPlaceholder.Description>
-            <PostCreateButton variant="outline" />
+            <SiteCreateButton variant="outline" />
           </EmptyPlaceholder>
         )}
       </div>
