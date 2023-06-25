@@ -4,125 +4,125 @@ importers:
 
   .:
     specifiers:
-      '@turbo/gen': ^1.9.7
-      eslint: ^7.32.0
-      prettier: ^2.5.1
+      '@turbo/gen': 1.10.6
+      eslint: 7.32.0
+      prettier: 2.8.8
       turbo: latest
     devDependencies:
-      '@turbo/gen': 1.9.7_uc4mglbmg4gsgxc6hysq56typi
+      '@turbo/gen': 1.10.6_uc4mglbmg4gsgxc6hysq56typi
       eslint: 7.32.0
       prettier: 2.8.8
       turbo: 1.10.6
 
   apps/cms:
     specifiers:
-      '@commitlint/cli': ^17.6.6
-      '@commitlint/config-conventional': ^17.6.6
-      '@editorjs/code': ^2.8.0
-      '@editorjs/editorjs': ^2.27.2
-      '@editorjs/embed': ^2.5.3
-      '@editorjs/header': ^2.7.0
-      '@editorjs/inline-code': ^1.4.0
-      '@editorjs/link': ^2.5.0
-      '@editorjs/list': ^1.8.0
-      '@editorjs/paragraph': ^2.9.0
-      '@editorjs/table': ^2.2.2
-      '@hookform/resolvers': ^3.1.1
-      '@ianvs/prettier-plugin-sort-imports': ^3.7.2
-      '@next-auth/prisma-adapter': ^1.0.7
-      '@next/eslint-plugin-next': ^13.4.7
-      '@prisma/client': ^4.16.1
-      '@radix-ui/colors': ^1.0.0
-      '@radix-ui/react-accessible-icon': ^1.0.3
-      '@radix-ui/react-accordion': ^1.1.2
-      '@radix-ui/react-alert-dialog': ^1.0.4
-      '@radix-ui/react-aspect-ratio': ^1.0.3
-      '@radix-ui/react-avatar': ^1.0.3
-      '@radix-ui/react-checkbox': ^1.0.4
-      '@radix-ui/react-collapsible': ^1.0.3
-      '@radix-ui/react-context-menu': ^2.1.4
-      '@radix-ui/react-dialog': ^1.0.4
-      '@radix-ui/react-dropdown-menu': ^2.0.5
-      '@radix-ui/react-hover-card': ^1.0.6
-      '@radix-ui/react-label': ^2.0.2
-      '@radix-ui/react-menubar': ^1.0.3
-      '@radix-ui/react-navigation-menu': ^1.1.3
-      '@radix-ui/react-popover': ^1.0.6
-      '@radix-ui/react-progress': ^1.0.3
-      '@radix-ui/react-radio-group': ^1.1.3
-      '@radix-ui/react-scroll-area': ^1.0.4
-      '@radix-ui/react-select': ^1.2.2
-      '@radix-ui/react-separator': ^1.0.3
-      '@radix-ui/react-slider': ^1.1.2
-      '@radix-ui/react-slot': ^1.0.2
-      '@radix-ui/react-switch': ^1.0.3
-      '@radix-ui/react-tabs': ^1.0.4
-      '@radix-ui/react-toast': ^1.1.4
-      '@radix-ui/react-toggle': ^1.0.3
-      '@radix-ui/react-toggle-group': ^1.0.4
-      '@radix-ui/react-tooltip': ^1.0.6
+      '@commitlint/cli': 17.6.6
+      '@commitlint/config-conventional': 17.6.6
+      '@editorjs/code': 2.8.0
+      '@editorjs/editorjs': 2.27.2
+      '@editorjs/embed': 2.5.3
+      '@editorjs/header': 2.7.0
+      '@editorjs/inline-code': 1.4.0
+      '@editorjs/link': 2.5.0
+      '@editorjs/list': 1.8.0
+      '@editorjs/paragraph': 2.9.0
+      '@editorjs/table': 2.2.2
+      '@hookform/resolvers': 3.1.1
+      '@ianvs/prettier-plugin-sort-imports': 3.7.2
+      '@next-auth/prisma-adapter': 1.0.7
+      '@next/eslint-plugin-next': 13.4.7
+      '@prisma/client': 4.16.1
+      '@radix-ui/colors': 1.0.0
+      '@radix-ui/react-accessible-icon': 1.0.3
+      '@radix-ui/react-accordion': 1.1.2
+      '@radix-ui/react-alert-dialog': 1.0.4
+      '@radix-ui/react-aspect-ratio': 1.0.3
+      '@radix-ui/react-avatar': 1.0.3
+      '@radix-ui/react-checkbox': 1.0.4
+      '@radix-ui/react-collapsible': 1.0.3
+      '@radix-ui/react-context-menu': 2.1.4
+      '@radix-ui/react-dialog': 1.0.4
+      '@radix-ui/react-dropdown-menu': 2.0.5
+      '@radix-ui/react-hover-card': 1.0.6
+      '@radix-ui/react-label': 2.0.2
+      '@radix-ui/react-menubar': 1.0.3
+      '@radix-ui/react-navigation-menu': 1.1.3
+      '@radix-ui/react-popover': 1.0.6
+      '@radix-ui/react-progress': 1.0.3
+      '@radix-ui/react-radio-group': 1.1.3
+      '@radix-ui/react-scroll-area': 1.0.4
+      '@radix-ui/react-select': 1.2.2
+      '@radix-ui/react-separator': 1.0.3
+      '@radix-ui/react-slider': 1.1.2
+      '@radix-ui/react-slot': 1.0.2
+      '@radix-ui/react-switch': 1.0.3
+      '@radix-ui/react-tabs': 1.0.4
+      '@radix-ui/react-toast': 1.1.4
+      '@radix-ui/react-toggle': 1.0.3
+      '@radix-ui/react-toggle-group': 1.0.4
+      '@radix-ui/react-tooltip': 1.0.6
       '@react-email/components': 0.0.6
-      '@t3-oss/env-nextjs': ^0.4.1
-      '@tailwindcss/line-clamp': ^0.4.4
-      '@tailwindcss/typography': ^0.5.9
-      '@types/node': ^18.16.18
+      '@t3-oss/env-nextjs': 0.4.1
+      '@tailwindcss/line-clamp': 0.4.4
+      '@tailwindcss/typography': 0.5.9
+      '@types/node': 18.16.18
       '@types/react': 18.2.14
       '@types/react-dom': 18.2.6
-      '@typescript-eslint/parser': ^5.60.0
-      '@vercel/analytics': ^1.0.1
-      '@vercel/og': ^0.5.8
-      autoprefixer: ^10.4.14
-      class-variance-authority: ^0.6.0
-      classnames: ^2.3.2
-      clsx: ^1.2.1
-      cmdk: ^0.2.0
-      contentlayer: ^0.3.3
-      date-fns: ^2.30.0
-      eslint: ^8.43.0
+      '@typescript-eslint/parser': 5.60.0
+      '@vercel/analytics': 1.0.1
+      '@vercel/og': 0.5.8
+      autoprefixer: 10.4.14
+      class-variance-authority: 0.6.0
+      classnames: 2.3.2
+      clsx: 1.2.1
+      cmdk: 0.2.0
+      contentlayer: 0.3.3
+      date-fns: 2.30.0
+      eslint: 8.43.0
       eslint-config-next: 13.4.7
-      eslint-config-prettier: ^8.8.0
-      eslint-plugin-react: ^7.32.2
-      eslint-plugin-tailwindcss: ^3.12.1
-      framer-motion: ^10.12.17
-      husky: ^8.0.3
-      lucide-react: ^0.252.0
-      markdown-wasm: ^1.2.0
-      mdast-util-toc: ^6.1.1
+      eslint-config-prettier: 8.8.0
+      eslint-plugin-react: 7.32.2
+      eslint-plugin-tailwindcss: 3.12.1
+      framer-motion: 10.12.17
+      husky: 8.0.3
+      lucide-react: 0.252.0
+      markdown-wasm: 1.2.0
+      mdast-util-toc: 6.1.1
       next: 13.4.7
       next-auth: 4.22.1
-      next-contentlayer: ^0.3.3
-      next-themes: ^0.2.1
-      nodemailer: ^6.9.3
-      postcss: ^8.4.24
-      prettier: ^2.8.8
-      prettier-plugin-tailwindcss: ^0.3.0
-      pretty-quick: ^3.1.3
-      prism-react-renderer: ^2.0.5
-      prisma: ^4.16.1
-      prop-types: ^15.8.1
-      react: ^18.2.0
-      react-day-picker: ^8.8.0
-      react-dom: ^18.2.0
-      react-editor-js: ^2.1.0
+      next-contentlayer: 0.3.3
+      next-themes: 0.2.1
+      nodemailer: 6.9.3
+      postcss: 8.4.24
+      prettier: 2.8.8
+      prettier-plugin-tailwindcss: 0.3.0
+      pretty-quick: 3.1.3
+      prism-react-renderer: 2.0.5
+      prisma: 4.16.1
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-day-picker: 8.8.0
+      react-dom: 18.2.0
+      react-editor-js: 2.1.0
       react-email: 1.9.3
-      react-hook-form: ^7.45.0
-      react-textarea-autosize: ^8.5.0
-      rehype: ^12.0.1
-      rehype-autolink-headings: ^6.1.1
-      rehype-pretty-code: ^0.10.0
-      rehype-slug: ^5.1.0
-      remark: ^14.0.3
-      remark-gfm: ^3.0.1
-      resend: ^0.15.3
-      sharp: ^0.32.1
-      shiki: ^0.14.2
-      stripe: ^12.10.0
-      tailwind-merge: ^1.13.2
-      tailwindcss: ^3.3.2
-      tailwindcss-animate: ^1.0.6
+      react-hook-form: 7.45.0
+      react-textarea-autosize: 8.5.0
+      rehype: 12.0.1
+      rehype-autolink-headings: 6.1.1
+      rehype-pretty-code: 0.10.0
+      rehype-slug: 5.1.0
+      remark: 14.0.3
+      remark-gfm: 3.0.1
+      resend: 0.15.3
+      sharp: 0.32.1
+      shiki: 0.14.2
+      stripe: 12.10.0
+      tailwind-merge: 1.13.2
+      tailwindcss: 3.3.2
+      tailwindcss-animate: 1.0.6
       typescript: 5.1.3
-      unist-util-visit: ^4.1.2
-      zod: ^3.21.4
+      unist-util-visit: 4.1.2
+      zod: 3.21.4
     dependencies:
       '@editorjs/code': 2.8.0
       '@editorjs/editorjs': 2.27.2
@@ -249,7 +249,7 @@ packages:
   /@babel/code-frame/7.12.11:
     resolution: {integrity: sha512-Zt1yodBx1UcyiePMSkWnU4hPqhwq7hGi2nFL1LeA3EUl+q2LQx16MISgJ0+z7dnmgvP9QtIleuETGOiOH1RcIw==}
     dependencies:
-      '@babel/highlight': 7.18.6
+      '@babel/highlight': 7.22.5
     dev: true
 
   /@babel/code-frame/7.22.5:
@@ -360,11 +360,6 @@ packages:
     resolution: {integrity: sha512-mM4COjgZox8U+JcXQwPijIZLElkgEpO5rsERVDJTc2qfCDfERyob6k5WegS14SX18IIjv+XD+GrqNumY5JRCDw==}
     engines: {node: '>=6.9.0'}
 
-  /@babel/helper-validator-identifier/7.19.1:
-    resolution: {integrity: sha512-awrNfaMtnHUr653GgGEs++LlAvW6w+DcPrOliSMXWCKo597CwL5Acf/wWdNkf/tfEQE3mjkeD1YOVZOUV/od1w==}
-    engines: {node: '>=6.9.0'}
-    dev: true
-
   /@babel/helper-validator-identifier/7.22.5:
     resolution: {integrity: sha512-aJXu+6lErq8ltp+JhkJUfk1MTGyuA4v7f3pA+BJ5HLfNC6nAQ0Cpi9uOquUj8Hehg0aUiHzWQbOVJGao6ztBAQ==}
     engines: {node: '>=6.9.0'}
@@ -382,15 +377,6 @@ packages:
       '@babel/types': 7.22.5
     transitivePeerDependencies:
       - supports-color
-
-  /@babel/highlight/7.18.6:
-    resolution: {integrity: sha512-u7stbOuYjaPezCuLj29hNW1v64M2Md2qupEKP1fHc7WdOA3DgLh37suiSrZYY7haUB7iBeQZ9P1uiRF359do3g==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.19.1
-      chalk: 2.4.2
-      js-tokens: 4.0.0
-    dev: true
 
   /@babel/highlight/7.22.5:
     resolution: {integrity: sha512-BSKlD1hgnedS5XRnGOljZawtag7H1yPfQp0tdNJCHoH6AZ+Pcm9VvkrK59/Yy593Ypg0zMxH2BxD1VPYUQ7UIw==}
@@ -3796,8 +3782,9 @@ packages:
   /@tsconfig/node16/1.0.4:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
 
-  /@turbo/gen/1.9.7_uc4mglbmg4gsgxc6hysq56typi:
-    resolution: {integrity: sha512-mjenROdRNvYxZixNfamJY/XxwKMT+01PuQby8+qdRUUa5ZLBPOv4rw11n+II1O8ZnpFpBJIGGFJcnRNY+lCddw==}
+  /@turbo/gen/1.10.6_uc4mglbmg4gsgxc6hysq56typi:
+    resolution: {integrity: sha512-sZWqL7VVBaLz4iFdMUpGg0n8agl7aLauGAVsrwC/0EQSmCh4tHzNeJQA4GSOjMwDBpa2ZO46/8KKdl2m0zDFRA==}
+    hasBin: true
     dependencies:
       chalk: 2.4.2
       commander: 10.0.1
@@ -3805,7 +3792,7 @@ packages:
       inquirer: 8.2.5
       minimatch: 9.0.0
       node-plop: 0.26.3
-      semver: 7.5.0
+      semver: 7.5.3
       ts-node: 10.9.1_uc4mglbmg4gsgxc6hysq56typi
       update-check: 1.5.4
       validate-npm-package-name: 5.0.0
@@ -4058,10 +4045,6 @@ packages:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-
-  /acorn/8.8.2:
-    resolution: {integrity: sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==}
-    engines: {node: '>=0.4.0'}
 
   /acorn/8.9.0:
     resolution: {integrity: sha512-jaVNAFBHNLXspO543WnNNPZFRtavh3skAkITqD0/2aeMkKZTN+254PyhwxFYrk3vQ1xfY+2wbesJMs/JC8/PwQ==}
@@ -5594,6 +5577,7 @@ packages:
   /eslint/7.32.0:
     resolution: {integrity: sha512-VHZ8gX+EDfz+97jGcgyGCyRia/dPOd6Xh9yPv8Bl1+SoaIwD+a/vlrOmGRUyOYu7MwUhc7CxqeaDZU13S4+EpA==}
     engines: {node: ^10.12.0 || >=12.0.0}
+    hasBin: true
     dependencies:
       '@babel/code-frame': 7.12.11
       '@eslint/eslintrc': 0.4.3
@@ -5629,7 +5613,7 @@ packages:
       optionator: 0.9.1
       progress: 2.0.3
       regexpp: 3.2.0
-      semver: 7.5.0
+      semver: 7.5.3
       strip-ansi: 6.0.1
       strip-json-comments: 3.1.1
       table: 6.8.1
@@ -6308,6 +6292,7 @@ packages:
   /handlebars/4.7.7:
     resolution: {integrity: sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==}
     engines: {node: '>=0.4.7'}
+    hasBin: true
     dependencies:
       minimist: 1.2.8
       neo-async: 2.6.2
@@ -9540,13 +9525,6 @@ packages:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
 
-  /semver/7.5.0:
-    resolution: {integrity: sha512-+XC0AD/R7Q2mPSRuy2Id0+CGTZ98+8f+KvwirxOKIEyid+XSx6HbC63p+O4IndTHuX5Z+JxQ0TghCkO5Cg/2HA==}
-    engines: {node: '>=10'}
-    dependencies:
-      lru-cache: 6.0.0
-    dev: true
-
   /semver/7.5.2:
     resolution: {integrity: sha512-SoftuTROv/cRjCze/scjGyiDtcUyxw1rgYQSZY7XTmtR5hX+dm76iDbTH8TkLPHCQmlbQVSSbNZCPM2hb0knnQ==}
     engines: {node: '>=10'}
@@ -10153,7 +10131,7 @@ packages:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 18.16.18
-      acorn: 8.8.2
+      acorn: 8.9.0
       acorn-walk: 8.2.0
       arg: 4.1.3
       create-require: 1.1.1
@@ -10328,6 +10306,7 @@ packages:
   /uglify-js/3.17.4:
     resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
     engines: {node: '>=0.8.0'}
+    hasBin: true
     requiresBuild: true
     dev: true
     optional: true
