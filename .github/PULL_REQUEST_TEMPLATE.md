@@ -4,7 +4,6 @@
 
 Fixes # (issue)
 
-
 ## Mandatory Tasks
 
 - [ ] Make sure you have self-reviewed the code.
