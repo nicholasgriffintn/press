@@ -4,9 +4,19 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [
+        ".next/**",
+        ".vercel/output/**",
+        ".next/**",
+        "dist/**"
+      ]
     },
     "lint": {},
+    "format": {
+      "cache": false
+    },
+    "format:check": {},
+    "test": {},
     "dev": {
       "cache": false,
       "persistent": true

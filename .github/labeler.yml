@@ -1,0 +1,8 @@
+"📌 area: cms":
+  - any: ["apps/cms/**/*"]
+
+"📚 documentation":
+  - any: ["**/*.md"]
+
+"📌 area: ci":
+  - any: [".github/**/*"]
