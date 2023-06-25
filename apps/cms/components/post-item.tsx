@@ -1,15 +1,17 @@
 import Link from "next/link";
-import { Content } from "@prisma/client";
+import { Content, ContentType, ContentStatus } from "@prisma/client";
 
 import { formatDate } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PostOperations } from "@/components/post-operations";
 
 interface PostItemProps {
-  post: Content;
+  post: Pick<Content, "id" | "title" | "published" | "createdAt">;
+  type: Pick<ContentType, "title">;
+  status: Pick<ContentStatus, "name">;
 }
 
-export function PostItem({ post }: PostItemProps) {
+export function PostItem({ post, type, status }: PostItemProps) {
   return (
     <div className="flex items-center justify-between p-4">
       <div className="grid gap-1">
@@ -22,7 +24,7 @@ export function PostItem({ post }: PostItemProps) {
         <div>
           <p className="text-sm text-muted-foreground">
             Created: {formatDate(post.createdAt?.toDateString())} - Type:{" "}
-            {post.type.title} - Status: {post.status.name}
+            {type.title} - Status: {status.name}
           </p>
         </div>
       </div>

@@ -106,7 +106,12 @@ export default async function SitesPage({ params }: SitesPageProps) {
               <h2>Content</h2>
             </div>
             {posts.map((post) => (
-              <PostItem key={post.id} post={post} />
+              <PostItem
+                key={post.id}
+                post={post}
+                status={post.status}
+                type={post.type}
+              />
             ))}
           </div>
         ) : (
