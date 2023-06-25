@@ -4,6 +4,17 @@
     "config:base"
   ],
   "rangeStrategy": "pin",
+  "supportPolicy": [
+    "lts_latest"
+  ],
+  "dependencyDashboardAutoclose": true,
+  "platformAutomerge": true,
+  "vulnerabilityAlerts": {
+    "labels": [
+      "security"
+    ],
+    "automerge": true
+  },
   "packageRules": [
     {
       "description": "Automatically merge minor and patch-level updates",
