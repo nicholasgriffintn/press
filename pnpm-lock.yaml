@@ -104,7 +104,7 @@ importers:
       react-day-picker: 8.8.0
       react-dom: 18.2.0
       react-editor-js: 2.1.0
-      react-email: 1.9.3
+      react-email: 1.9.4
       react-hook-form: 7.45.0
       react-textarea-autosize: 8.5.0
       rehype: 12.0.1
@@ -187,7 +187,7 @@ importers:
       react-day-picker: 8.8.0_kzhlcyde2l6xjiirkbg7jzhosa
       react-dom: 18.2.0_react@18.2.0
       react-editor-js: 2.1.0_hblwtqlxhehgk2tdr4ko23q3cm
-      react-email: 1.9.3
+      react-email: 1.9.4
       react-hook-form: 7.45.0_react@18.2.0
       react-textarea-autosize: 8.5.0_i73ekzlbntu7jol6ph2fvy4mga
       resend: 0.15.3
@@ -8808,8 +8808,8 @@ packages:
       - react
     dev: false
 
-  /react-email/1.9.3:
-    resolution: {integrity: sha512-pD+uVG6GoJR03Kzkk5KHPlc/TtUZ/UYs/hfakeRP6Ma/Oja0fOw4gjYGXQo0zwwqEM5OdLQOdS3qBCJyRYrqVw==}
+  /react-email/1.9.4:
+    resolution: {integrity: sha512-DNUQb7xzAlMga2ZppG57bnWhJnqOEcTYzxNvLA4IVCiYJkgPNVukFMOZVG2OuQ0W8ddiF6bLZBKDZHnnIenbpw==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     dependencies:
