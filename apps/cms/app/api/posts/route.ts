@@ -1,10 +1,16 @@
-import { getServerSession } from "next-auth/next"
-import * as z from "zod"
+import { getServerSession } from "next-auth/next";
+import * as z from "zod";
 
-import { authOptions } from "@/lib/auth"
-import { db } from "@/lib/db"
-import { RequiresProPlanError } from "@/lib/exceptions"
-import { getUserSubscriptionPlan } from "@/lib/subscription"
+
+
+import { authOptions } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { RequiresProPlanError } from "@/lib/exceptions";
+import { getUserSubscriptionPlan } from "@/lib/subscription";
+
+
+
+
 
 const postCreateSchema = z.object({
   title: z.string(),
@@ -37,6 +43,7 @@ export async function GET() {
 
     return new Response(JSON.stringify(posts))
   } catch (error) {
+    console.error(error)
     return new Response(null, { status: 500 })
   }
 }
@@ -94,6 +101,8 @@ export async function POST(req: Request) {
     if (error instanceof RequiresProPlanError) {
       return new Response("Requires Pro Plan", { status: 402 })
     }
+
+    console.error(error)
 
     return new Response(null, { status: 500 })
   }
