@@ -1,53 +1,45 @@
-import { redirect } from "next/navigation"
+import { redirect } from "next/navigation";
 
-import { authOptions } from "@/lib/auth"
-import { db } from "@/lib/db"
-import { getCurrentUser } from "@/lib/session"
-import { EmptyPlaceholder } from "@/components/empty-placeholder"
-import { DashboardHeader } from "@/components/header"
-import { DashboardShell } from "@/components/shell"
-import { SiteCreateButton } from "@/components/site-create-button"
-import { SiteItem } from "@/components/site-item"
+import { authOptions } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { getCurrentUser } from "@/lib/session";
+import { EmptyPlaceholder } from "@/components/empty-placeholder";
+import { DashboardHeader } from "@/components/header";
+import { DashboardShell } from "@/components/shell";
+import { SiteCreateButton } from "@/components/site-create-button";
+import { SiteItem } from "@/components/site-item";
 
 export const metadata = {
   title: "Dashboard",
-}
+};
 
 export default async function DashboardPage() {
-  const user = await getCurrentUser()
+  const user = await getCurrentUser();
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || "/login")
+    redirect(authOptions?.pages?.signIn || "/login");
   }
 
-  const users = await db.user.findMany({
+  const userInfo = await db.user.findUnique({
     where: {
       id: user.id,
     },
-    include: {
+    select: {
       TenantUser: {
         include: {
           tenant: {
-            include: {
+            select: {
               Site: true,
             },
           },
         },
       },
     },
-  })
+  });
 
-  const sites = users.reduce((prev, next) => {
-    const site = next.TenantUser.map(
-      (tenantUser) => tenantUser.tenant.Site
-    ).flat()
-
-    if (site.length) {
-      return [...site, ...prev]
-    }
-
-    return prev
-  }, [])
+  const sites = userInfo?.TenantUser.reduce((prev, next) => {
+    return [...next.tenant.Site, ...prev];
+  }, []);
 
   return (
     <DashboardShell>
@@ -58,7 +50,7 @@ export default async function DashboardPage() {
         {sites?.length ? (
           <div className="divide-y divide-border rounded-md border">
             {sites.map((site) => {
-              return <SiteItem key={site.id} site={site} />
+              return <SiteItem key={site.id} site={site} />;
             })}
           </div>
         ) : (
@@ -75,5 +67,5 @@ export default async function DashboardPage() {
         )}
       </div>
     </DashboardShell>
-  )
+  );
 }

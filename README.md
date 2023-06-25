@@ -8,6 +8,7 @@ With tenant capabilities, it allows you to create content for a number of sites 
 
 - [Using the Next.JS Framework (App Directory)](https://nextjs.org/)
 - [Components from shadcn](https://ui.shadcn.com/)
+- [Auth with NextAuth.js](https://next-auth.js.org/)
 - [Hosted on Vercel](https://vercel.com/)
 - [Emails with Resend](https://resend.com/)
 - [Database with PlanetScale](https://planetscale.com/)

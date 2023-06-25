@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { useRouter } from "next/navigation"
-import { User } from "@prisma/client"
+import * as React from "react";
+import { useRouter } from "next/navigation";
+import { User } from "@prisma/client";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,45 +14,45 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
-import { buttonVariants } from "@/components/ui/button"
+} from "@/components/ui/alert-dialog";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { toast } from "@/components/ui/use-toast"
-import { Icons } from "@/components/icons"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { toast } from "@/components/ui/use-toast";
+import { Icons } from "@/components/icons";
 
 interface SiteSettingsFormProps extends React.HTMLAttributes<HTMLFormElement> {
-  site: Pick<User, "id" | "name">
+  site: Pick<User, "id" | "name">;
 }
 
 async function deleteSite(siteId: string) {
   const response = await fetch(`/api/sites/${siteId}`, {
     method: "DELETE",
-  })
+  });
 
   if (!response?.ok) {
     toast({
       title: "Something went wrong.",
       description: "Your post was not deleted. Please try again.",
       variant: "destructive",
-    })
+    });
   }
 
-  return true
+  return true;
 }
 
 export function SiteSettingsForm({ site, className }: SiteSettingsFormProps) {
-  const router = useRouter()
-  const [name, setName] = React.useState<string>("")
-  const [showDeleteAlert, setShowDeleteAlert] = React.useState<boolean>(false)
-  const [isSaving, setIsSaving] = React.useState<boolean>(false)
+  const router = useRouter();
+  const [name, setName] = React.useState<string>("");
+  const [showDeleteAlert, setShowDeleteAlert] = React.useState<boolean>(false);
+  const [isSaving, setIsSaving] = React.useState<boolean>(false);
 
   return (
     <>
@@ -107,15 +107,15 @@ export function SiteSettingsForm({ site, className }: SiteSettingsFormProps) {
             <AlertDialogAction
               disabled={name !== site.name}
               onClick={async (event) => {
-                event.preventDefault()
-                setIsSaving(true)
+                event.preventDefault();
+                setIsSaving(true);
 
-                const deleted = await deleteSite(site.id)
+                const deleted = await deleteSite(site.id);
 
                 if (deleted) {
-                  setIsSaving(false)
-                  setShowDeleteAlert(false)
-                  router.refresh()
+                  setIsSaving(false);
+                  setShowDeleteAlert(false);
+                  router.refresh();
                 }
               }}
               className="bg-red-600 focus:ring-red-600"
@@ -131,5 +131,5 @@ export function SiteSettingsForm({ site, className }: SiteSettingsFormProps) {
         </AlertDialogContent>
       </AlertDialog>
     </>
-  )
+  );
 }

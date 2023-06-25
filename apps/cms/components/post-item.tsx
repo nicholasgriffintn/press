@@ -1,15 +1,17 @@
-import Link from "next/link"
-import { Content } from "@prisma/client"
+import Link from "next/link";
+import { Content, ContentType, ContentStatus } from "@prisma/client";
 
-import { formatDate } from "@/lib/utils"
-import { Skeleton } from "@/components/ui/skeleton"
-import { PostOperations } from "@/components/post-operations"
+import { formatDate } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
+import { PostOperations } from "@/components/post-operations";
 
 interface PostItemProps {
-  post: Pick<Content, "id" | "title" | "published" | "createdAt">
+  post: Pick<Content, "id" | "title" | "published" | "createdAt">;
+  type: Pick<ContentType, "title">;
+  status: Pick<ContentStatus, "name">;
 }
 
-export function PostItem({ post }: PostItemProps) {
+export function PostItem({ post, type, status }: PostItemProps) {
   return (
     <div className="flex items-center justify-between p-4">
       <div className="grid gap-1">
@@ -21,13 +23,14 @@ export function PostItem({ post }: PostItemProps) {
         </Link>
         <div>
           <p className="text-sm text-muted-foreground">
-            {formatDate(post.createdAt?.toDateString())}
+            Created: {formatDate(post.createdAt?.toDateString())} - Type:{" "}
+            {type.title} - Status: {status.name}
           </p>
         </div>
       </div>
       <PostOperations post={{ id: post.id, title: post.title }} />
     </div>
-  )
+  );
 }
 
 PostItem.Skeleton = function PostItemSkeleton() {
@@ -38,5 +41,5 @@ PostItem.Skeleton = function PostItemSkeleton() {
         <Skeleton className="h-4 w-4/5" />
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { Site } from "@prisma/client"
+import * as React from "react";
+import Link from "next/link";
+import { Site } from "@prisma/client";
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Icons } from "@/components/icons"
+} from "@/components/ui/dropdown-menu";
+import { Icons } from "@/components/icons";
 
 interface SiteOperationsProps {
-  site: Pick<Site, "id" | "name">
+  site: Pick<Site, "id" | "name">;
 }
 
 export function SiteOperations({ site }: SiteOperationsProps) {
@@ -33,5 +33,5 @@ export function SiteOperations({ site }: SiteOperationsProps) {
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  )
+  );
 }
