@@ -73,7 +73,7 @@ export default async function DashboardPage() {
           <EmptyPlaceholder>
             <EmptyPlaceholder.Icon name="settings" />
             <EmptyPlaceholder.Title>
-              You don't have any sites yet!
+              You don&apos;t have any sites yet!
             </EmptyPlaceholder.Title>
             <EmptyPlaceholder.Description>
               Get another user to invite you to one, or create your own below:
