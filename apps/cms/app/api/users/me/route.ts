@@ -1,18 +1,6 @@
 import { getServerSession } from "next-auth/next"
-import * as z from "zod"
 
 import { authOptions } from "@/lib/auth"
-import { db } from "@/lib/db"
-import { RequiresProPlanError } from "@/lib/exceptions"
-import { getUserSubscriptionPlan } from "@/lib/subscription"
-
-const postCreateSchema = z.object({
-  title: z.string(),
-  content: z.string().optional(),
-  siteId: z.string(),
-  contentStatusId: z.string(),
-  contentTypeId: z.string(),
-})
 
 export async function GET() {
   try {
