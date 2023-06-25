@@ -61,7 +61,7 @@ importers:
       '@radix-ui/react-toggle': 1.0.3
       '@radix-ui/react-toggle-group': 1.0.4
       '@radix-ui/react-tooltip': 1.0.6
-      '@react-email/components': 0.0.6
+      '@react-email/components': 0.0.7
       '@t3-oss/env-nextjs': 0.4.1
       '@tailwindcss/line-clamp': 0.4.4
       '@tailwindcss/typography': 0.5.9
@@ -165,7 +165,7 @@ importers:
       '@radix-ui/react-toggle': 1.0.3_hrrtw4it2dqo6rzcqzvl36ff7i
       '@radix-ui/react-toggle-group': 1.0.4_hrrtw4it2dqo6rzcqzvl36ff7i
       '@radix-ui/react-tooltip': 1.0.6_hrrtw4it2dqo6rzcqzvl36ff7i
-      '@react-email/components': 0.0.6_ts-node@10.9.1
+      '@react-email/components': 0.0.7_ts-node@10.9.1
       '@t3-oss/env-nextjs': 0.4.1_i2fvzue2cjjncoywjfv7hcm7mu
       '@typescript-eslint/parser': 5.60.0_7yfldhli4vs6yywnkyiujhawka
       '@vercel/analytics': 1.0.1
@@ -3546,8 +3546,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-email/button/0.0.8:
-    resolution: {integrity: sha512-EOIX/ewPgn/CXUvaAbR92jfWC8EXTSRBafpKtIbxchMcx/iIEG7/JqUndJdZ7BqgON1o6GLm3xP2+AtXtTZJkg==}
+  /@react-email/button/0.0.9:
+    resolution: {integrity: sha512-eYWQ1X4RFlkKYYSPgSrT6rk98wuLOieEAGENrp9j37t1v/1C+jMmBu0UjZvwHsHWdbOMRjbVDFeMI/+MxWKSEg==}
     engines: {node: '>=16.0.0'}
     dependencies:
       react: 18.2.0
@@ -3560,15 +3560,15 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-email/components/0.0.6_ts-node@10.9.1:
-    resolution: {integrity: sha512-G58s12BKw5ztdzXNvyi/Z3QryBHjSXx5D2oOcCJd+bEL217mxf7fGqBBUu+2Srs/00k5k3vs9OVLmKfpUgee9g==}
+  /@react-email/components/0.0.7_ts-node@10.9.1:
+    resolution: {integrity: sha512-GpRKV8E7EvK9OPf61f5Z8hliB3p0hTot8tslmEUVCTtX7tdL0wM2YEcZiDWU4PJcudJ/QWHJ7Y5wGzNEARcooA==}
     engines: {node: '>=16.0.0'}
     dependencies:
       '@react-email/body': 0.0.2
-      '@react-email/button': 0.0.8
+      '@react-email/button': 0.0.9
       '@react-email/column': 0.0.7
       '@react-email/container': 0.0.8
-      '@react-email/font': 0.0.1
+      '@react-email/font': 0.0.2
       '@react-email/head': 0.0.5
       '@react-email/heading': 0.0.8
       '@react-email/hr': 0.0.5
@@ -3593,8 +3593,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-email/font/0.0.1:
-    resolution: {integrity: sha512-n43gjIIBgQse1visYsyk8zADzk1QHVrqLc98rKoQLG3qJwLBGTHYLpMDti/4tCAt54d7Ln1VINipGsyQS8PaqA==}
+  /@react-email/font/0.0.2:
+    resolution: {integrity: sha512-mmkyOCAcbgytE7DfIuOBVG1YVDUZY9rPCor4o7pUEzGJiU2y/TNuV8CgNPSU/VgXeBKL/94QDjB62OrGHlFNMQ==}
     dependencies:
       react: 18.2.0
     dev: false
