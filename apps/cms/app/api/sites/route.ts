@@ -1,17 +1,11 @@
-import { Role, VerificationStatus } from "@prisma/client";
-import { getServerSession } from "next-auth/next";
-import * as z from "zod";
+import { Role, VerificationStatus } from "@prisma/client"
+import { getServerSession } from "next-auth/next"
+import * as z from "zod"
 
-
-
-import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { RequiresProPlanError } from "@/lib/exceptions";
-import { getUserSubscriptionPlan } from "@/lib/subscription";
-
-
-
-
+import { authOptions } from "@/lib/auth"
+import { db } from "@/lib/db"
+import { RequiresProPlanError } from "@/lib/exceptions"
+import { getUserSubscriptionPlan } from "@/lib/subscription"
 
 const tenantCreateSchema = z.object({
   name: z.string(),

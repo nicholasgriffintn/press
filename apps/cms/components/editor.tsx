@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import EditorJS from "@editorjs/editorjs";
+import * as React from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import EditorJS from "@editorjs/editorjs"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Content } from "@prisma/client"
 import { useForm } from "react-hook-form"
