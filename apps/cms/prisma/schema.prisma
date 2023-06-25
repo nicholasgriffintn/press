@@ -478,8 +478,8 @@ model Note {
 model ContentStatus {
   id            String   @id @default(cuid())
   siteId        String
-  name          String   @unique
-  color         String
+  name          String
+  color         String?
   publish       Boolean  @default(false)
   archive       Boolean  @default(false)
   pendingReview Boolean  @default(false) @map("pending_review")
@@ -490,7 +490,7 @@ model ContentStatus {
   createdAt     DateTime @default(now()) @map(name: "created_at")
   updatedAt     DateTime @default(now()) @map(name: "updated_at")
   createdBy     String   @map(name: "created_by")
-  updatedBy     String   @map(name: "updated_by")
+  updatedBy     String?   @map(name: "updated_by")
 
   site    Site      @relation(fields: [siteId], references: [id])
   Content Content[]
@@ -509,7 +509,7 @@ model ContentType {
   createdAt    DateTime      @default(now()) @map(name: "created_at")
   updatedAt    DateTime      @default(now()) @map(name: "updated_at")
   createdBy    String        @map(name: "created_by")
-  updatedBy    String        @map(name: "updated_by")
+  updatedBy    String?        @map(name: "updated_by")
 
   site    Site      @relation(fields: [siteId], references: [id])
   Content Content[]

@@ -58,7 +58,9 @@ export default async function DashboardPage() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Dashboard" text="Select a site to manage." />
+      <DashboardHeader heading="Dashboard" text="Select a site to manage.">
+        <SiteCreateButton />
+      </DashboardHeader>
       <div>
         {sites?.length ? (
           <div className="divide-y divide-border rounded-md border">

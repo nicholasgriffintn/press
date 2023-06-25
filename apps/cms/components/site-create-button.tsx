@@ -1,9 +1,21 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { useRouter } from "next/navigation"
+import * as React from "react";
+import { useRouter } from "next/navigation";
+
+
 
 import { cn } from "@/lib/utils"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
@@ -16,7 +28,11 @@ export function SiteCreateButton({
   ...props
 }: SiteCreateButtonProps) {
   const router = useRouter()
+  const [showCreateSiteAlert, setShowCreateSiteAlert] =
+    React.useState<boolean>(false)
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [name, setName] = React.useState<string>("")
+  const [url, setUrl] = React.useState<string>("")
 
   async function onClick() {
     setIsLoading(true)
@@ -27,8 +43,8 @@ export function SiteCreateButton({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: "Untitled Site",
-        url: "https://example.com",
+        name,
+        url,
       }),
     })
 
@@ -59,24 +75,78 @@ export function SiteCreateButton({
   }
 
   return (
-    <button
-      onClick={onClick}
-      className={cn(
-        buttonVariants({ variant }),
-        {
-          "cursor-not-allowed opacity-60": isLoading,
-        },
-        className
-      )}
-      disabled={isLoading}
-      {...props}
-    >
-      {isLoading ? (
-        <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-      ) : (
-        <Icons.add className="mr-2 h-4 w-4" />
-      )}
-      New site
-    </button>
+    <>
+      <button
+        onClick={() => setShowCreateSiteAlert(true)}
+        className={cn(
+          buttonVariants({ variant }),
+          {
+            "cursor-not-allowed opacity-60": isLoading,
+          },
+          className
+        )}
+        disabled={isLoading}
+        {...props}
+      >
+        {isLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.add className="mr-2 h-4 w-4" />
+        )}
+        New site
+      </button>
+      <AlertDialog
+        open={showCreateSiteAlert}
+        onOpenChange={setShowCreateSiteAlert}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Create a new site</AlertDialogTitle>
+            <AlertDialogDescription>
+              Fill in the form below to create your new site:
+            </AlertDialogDescription>
+            <>
+              <label htmlFor="site-name">Name:</label>
+              <input
+                id="site-name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+              />
+            </>
+            <>
+              <label htmlFor="site-url">URL:</label>
+              <input
+                id="site-url"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                type="text"
+              />
+            </>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={onClick}
+              className={cn(
+                buttonVariants({ variant }),
+                {
+                  "cursor-not-allowed opacity-60": isLoading,
+                },
+                className
+              )}
+              disabled={isLoading || !name || !url}
+            >
+              {isLoading ? (
+                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Icons.add className="mr-2 h-4 w-4" />
+              )}
+              <span>Create New Site</span>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   )
 }

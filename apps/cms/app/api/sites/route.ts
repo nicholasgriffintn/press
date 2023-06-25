@@ -110,6 +110,30 @@ export async function POST(req: Request) {
       },
     })
 
+    db.contentStatus.create({
+      data: {
+        siteId: site.id,
+        name: "Published",
+        roles: Role.admin,
+        createdBy: user.id,
+      },
+      select: {
+        id: true,
+      },
+    })
+
+    db.contentType.create({
+      data: {
+        siteId: site.id,
+        title: "Post",
+        slug: "/editor/posts/",
+        createdBy: user.id,
+      },
+      select: {
+        id: true,
+      },
+    })
+
     return new Response(JSON.stringify(site))
   } catch (error) {
     if (error instanceof z.ZodError) {
