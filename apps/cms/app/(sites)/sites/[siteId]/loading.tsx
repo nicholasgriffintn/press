@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton"
 import { PostItem } from "@/components/post-item"
 import { DashboardShell } from "@/components/shell"
 

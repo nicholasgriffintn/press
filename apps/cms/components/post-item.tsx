@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"
 import { Content } from "@prisma/client"
 
 import { formatDate } from "@/lib/utils"
