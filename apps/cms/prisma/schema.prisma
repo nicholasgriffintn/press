@@ -63,6 +63,7 @@ model User {
   Device                 Device[]
   Notification           Notification? @relation(fields: [notificationId], references: [id])
   notificationId         String?
+  Post                   Post[]
 
   @@map(name: "users")
 }
@@ -83,8 +84,8 @@ model Notification {
   siteId    String
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
-  createdBy String   @map(name: "created_by")
-  updatedBy String   @map(name: "updated_by")
+  createdBy String?  @map(name: "created_by")
+  updatedBy String?  @map(name: "updated_by")
 
   site Site @relation(fields: [siteId], references: [id])
 
@@ -110,8 +111,8 @@ model Provider {
   name      String   @default("default")
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
-  createdBy String   @map(name: "created_by")
-  updatedBy String   @map(name: "updated_by")
+  createdBy String?  @map(name: "created_by")
+  updatedBy String?  @map(name: "updated_by")
   Tenant    Tenant[]
 
   @@unique([name])
@@ -222,8 +223,8 @@ model Site {
   tenantId  String
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
-  createdBy String   @map(name: "created_by")
-  updatedBy String   @map(name: "updated_by")
+  createdBy String?  @map(name: "created_by")
+  updatedBy String?  @map(name: "updated_by")
 
   tenant        Tenant          @relation(fields: [tenantId], references: [id])
   Content       Content[]
@@ -281,8 +282,8 @@ model Flag {
   siteId    String
   createdAt DateTime   @default(now()) @map(name: "created_at")
   updatedAt DateTime   @default(now()) @map(name: "updated_at")
-  createdBy String     @map(name: "created_by")
-  updatedBy String     @map(name: "updated_by")
+  createdBy String?    @map(name: "created_by")
+  updatedBy String?    @map(name: "updated_by")
 
   site Site @relation(fields: [siteId], references: [id])
 
@@ -336,8 +337,8 @@ model Vercel {
   appName   String
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
-  createdBy String   @map(name: "created_by")
-  updatedBy String   @map(name: "updated_by")
+  createdBy String?  @map(name: "created_by")
+  updatedBy String?  @map(name: "updated_by")
 
   site Site @relation(fields: [siteId], references: [id])
 
@@ -358,8 +359,8 @@ model Deployment {
   siteId    String
   createdAt DateTime         @default(now()) @map(name: "created_at")
   updatedAt DateTime         @default(now()) @map(name: "updated_at")
-  createdBy String           @map(name: "created_by")
-  updatedBy String           @map(name: "updated_by")
+  createdBy String?          @map(name: "created_by")
+  updatedBy String?          @map(name: "updated_by")
 
   site Site @relation(fields: [siteId], references: [id])
 
@@ -380,8 +381,8 @@ model Form {
   siteId    String
   createdAt DateTime     @default(now()) @map(name: "created_at")
   updatedAt DateTime     @default(now()) @map(name: "updated_at")
-  createdBy String       @map(name: "created_by")
-  updatedBy String       @map(name: "updated_by")
+  createdBy String?      @map(name: "created_by")
+  updatedBy String?      @map(name: "updated_by")
 
   site     Site       @relation(fields: [siteId], references: [id])
   Response Response[]
@@ -396,8 +397,8 @@ model Response {
   siteId    String
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
-  createdBy String   @map(name: "created_by")
-  updatedBy String   @map(name: "updated_by")
+  createdBy String?  @map(name: "created_by")
+  updatedBy String?  @map(name: "updated_by")
 
   site   Site   @relation(fields: [siteId], references: [id])
   formId String
@@ -458,8 +459,8 @@ model Task {
   content   String
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
-  createdBy String   @map(name: "created_by")
-  updatedBy String   @map(name: "updated_by")
+  createdBy String?  @map(name: "created_by")
+  updatedBy String?  @map(name: "updated_by")
 
   site      Site     @relation(fields: [siteId], references: [id])
   Content   Content? @relation(fields: [contentId], references: [id])
@@ -475,8 +476,8 @@ model Note {
   content   String
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
-  createdBy String   @map(name: "created_by")
-  updatedBy String   @map(name: "updated_by")
+  createdBy String?  @map(name: "created_by")
+  updatedBy String?  @map(name: "updated_by")
 
   site      Site     @relation(fields: [siteId], references: [id])
   Content   Content? @relation(fields: [contentId], references: [id])
@@ -527,31 +528,45 @@ model ContentType {
   @@map(name: "contenttypes")
 }
 
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   Json?
+  published Boolean  @default(false)
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @map(name: "updated_at")
+  authorId  String
+
+  author User @relation(fields: [authorId], references: [id])
+
+  @@map(name: "posts")
+}
+
 model Content {
   id String @id @default(cuid())
 
   title            String
-  dueDate          DateTime?     @map(name: "due_date")
-  publishDate      DateTime?     @map(name: "publish_date")
+  dueDate          DateTime?      @map(name: "due_date")
+  publishDate      DateTime?      @map(name: "publish_date")
   content          Json?
-  customFieldsData Json?         @map("custom_fields_data")
-  readOnly         Boolean       @default(false) @map(name: "read_only")
-  published        Boolean       @default(false)
-  private          Boolean       @default(false)
-  draft            Boolean       @default(false)
-  showInMenu       Boolean       @default(false) @map("show_in_menu")
+  customFieldsData Json?          @map("custom_fields_data")
+  readOnly         Boolean        @default(false) @map(name: "read_only")
+  published        Boolean        @default(false)
+  private          Boolean        @default(false)
+  draft            Boolean        @default(false)
+  showInMenu       Boolean        @default(false) @map("show_in_menu")
   seo              Json?
   authorId         String
   siteId           String
-  featuredImageUrl String?       @db.VarChar(1024)
+  featuredImageUrl String?        @db.VarChar(1024)
   status           ContentStatus @relation(fields: [contentStatusId], references: [id])
   type             ContentType   @relation(fields: [contentTypeId], references: [id])
 
-  site         Site         @relation(fields: [siteId], references: [id])
+  site         Site        @relation(fields: [siteId], references: [id])
   Compliance   Compliance[]
   notes        Note[]
   tasks        Task[]
-  template     Template?     @relation(fields: [templateId], references: [id])
+  template     Template?    @relation(fields: [templateId], references: [id])
   templateId   String?
   contributors Json
 
@@ -562,7 +577,7 @@ model Content {
   contentStatusId String
   contentTypeId   String
 
-  @@map(name: "posts")
+  @@map(name: "content")
 }
 
 enum WorkflowStatement {
@@ -604,8 +619,8 @@ model Workflow {
   siteId    String
   createdAt DateTime          @default(now()) @map(name: "created_at")
   updatedAt DateTime          @default(now()) @map(name: "updated_at")
-  createdBy String            @map(name: "created_by")
-  updatedBy String            @map(name: "updated_by")
+  createdBy String?           @map(name: "created_by")
+  updatedBy String?           @map(name: "updated_by")
 
   site Site @relation(fields: [siteId], references: [id])
 
@@ -639,8 +654,8 @@ model Compliance {
   contentId String
   createdAt DateTime         @default(now()) @map(name: "created_at")
   updatedAt DateTime         @default(now()) @map(name: "updated_at")
-  createdBy String           @map(name: "created_by")
-  updatedBy String           @map(name: "updated_by")
+  createdBy String?          @map(name: "created_by")
+  updatedBy String?          @map(name: "updated_by")
 
   site    Site    @relation(fields: [siteId], references: [id])
   content Content @relation(fields: [contentId], references: [id])
