@@ -1,6 +1,6 @@
-import { Skeleton } from "@/components/ui/skeleton"
-import { PostItem } from "@/components/post-item"
-import { DashboardShell } from "@/components/shell"
+import { Skeleton } from "@/components/ui/skeleton";
+import { PostItem } from "@/components/post-item";
+import { DashboardShell } from "@/components/shell";
 
 export default function DashboardLoading() {
   return (
@@ -17,5 +17,5 @@ export default function DashboardLoading() {
         <PostItem.Skeleton />
       </div>
     </DashboardShell>
-  )
+  );
 }

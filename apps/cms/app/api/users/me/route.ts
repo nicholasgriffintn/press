@@ -1,24 +1,24 @@
-import { getServerSession } from "next-auth/next"
+import { getServerSession } from "next-auth/next";
 
-import { authOptions } from "@/lib/auth"
+import { authOptions } from "@/lib/auth";
 
 export async function GET() {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await getServerSession(authOptions);
 
     if (!session) {
-      return new Response("Unauthorized", { status: 403 })
+      return new Response("Unauthorized", { status: 403 });
     }
 
-    const { user } = session
+    const { user } = session;
 
     if (!user) {
-      return new Response("Unauthorized", { status: 403 })
+      return new Response("Unauthorized", { status: 403 });
     }
 
-    return new Response(JSON.stringify(user))
+    return new Response(JSON.stringify(user));
   } catch (error) {
-    console.error(error)
-    return new Response(null, { status: 500 })
+    console.error(error);
+    return new Response(null, { status: 500 });
   }
 }

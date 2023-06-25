@@ -1,12 +1,12 @@
-import Link from "next/link"
-import { Site } from "@prisma/client"
+import Link from "next/link";
+import { Site } from "@prisma/client";
 
-import { formatDate } from "@/lib/utils"
-import { Skeleton } from "@/components/ui/skeleton"
-import { SiteOperations } from "@/components/site-operations"
+import { formatDate } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
+import { SiteOperations } from "@/components/site-operations";
 
 interface SiteItemProps {
-  site: Pick<Site, "id" | "name" | "createdAt">
+  site: Pick<Site, "id" | "name" | "createdAt">;
 }
 
 export function SiteItem({ site }: SiteItemProps) {
@@ -27,7 +27,7 @@ export function SiteItem({ site }: SiteItemProps) {
       </div>
       <SiteOperations site={{ id: site.id, name: site.name }} />
     </div>
-  )
+  );
 }
 
 SiteItem.Skeleton = function SiteItemSkeleton() {
@@ -38,5 +38,5 @@ SiteItem.Skeleton = function SiteItemSkeleton() {
         <Skeleton className="h-4 w-4/5" />
       </div>
     </div>
-  )
-}
+  );
+};

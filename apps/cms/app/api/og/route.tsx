@@ -1,22 +1,22 @@
-import { ImageResponse } from "next/server"
+import { ImageResponse } from "next/server";
 
-import { ogImageSchema } from "@/lib/validations/og"
+import { ogImageSchema } from "@/lib/validations/og";
 
-export const runtime = "edge"
+export const runtime = "edge";
 
 export async function GET(req: Request) {
   try {
-    const url = new URL(req.url)
-    const values = ogImageSchema.parse(Object.fromEntries(url.searchParams))
+    const url = new URL(req.url);
+    const values = ogImageSchema.parse(Object.fromEntries(url.searchParams));
     const heading =
       values.heading.length > 140
         ? `${values.heading.substring(0, 140)}...`
-        : values.heading
+        : values.heading;
 
-    const { mode } = values
-    const paint = mode === "dark" ? "#fff" : "#000"
+    const { mode } = values;
+    const paint = mode === "dark" ? "#fff" : "#000";
 
-    const fontSize = heading.length > 100 ? "70px" : "100px"
+    const fontSize = heading.length > 100 ? "70px" : "100px";
 
     return new ImageResponse(
       (
@@ -96,11 +96,11 @@ export async function GET(req: Request) {
           </div>
         </div>
       )
-    )
+    );
   } catch (error) {
-    console.error(error)
+    console.error(error);
     return new Response(`Failed to generate image`, {
       status: 500,
-    })
+    });
   }
 }

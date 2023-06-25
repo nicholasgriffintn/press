@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { useRouter } from "next/navigation"
+import * as React from "react";
+import { useRouter } from "next/navigation";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,12 +13,12 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
-import { ButtonProps, buttonVariants } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { toast } from "@/components/ui/use-toast"
-import { Icons } from "@/components/icons"
+} from "@/components/ui/alert-dialog";
+import { ButtonProps, buttonVariants } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { toast } from "@/components/ui/use-toast";
+import { Icons } from "@/components/icons";
 
 interface SiteCreateButtonProps extends ButtonProps {}
 
@@ -27,15 +27,15 @@ export function SiteCreateButton({
   variant,
   ...props
 }: SiteCreateButtonProps) {
-  const router = useRouter()
+  const router = useRouter();
   const [showCreateSiteAlert, setShowCreateSiteAlert] =
-    React.useState<boolean>(false)
-  const [isLoading, setIsLoading] = React.useState<boolean>(false)
-  const [name, setName] = React.useState<string>("")
-  const [url, setUrl] = React.useState<string>("")
+    React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [name, setName] = React.useState<string>("");
+  const [url, setUrl] = React.useState<string>("");
 
   async function onClick() {
-    setIsLoading(true)
+    setIsLoading(true);
 
     const response = await fetch("/api/sites", {
       method: "POST",
@@ -46,9 +46,9 @@ export function SiteCreateButton({
         name,
         url,
       }),
-    })
+    });
 
-    setIsLoading(false)
+    setIsLoading(false);
 
     if (!response?.ok) {
       if (response.status === 402) {
@@ -56,22 +56,22 @@ export function SiteCreateButton({
           title: "Limit of 1 site reached.",
           description: "Please upgrade to the PRO plan.",
           variant: "destructive",
-        })
+        });
       }
 
       return toast({
         title: "Something went wrong.",
         description: "Your post was not created. Please try again.",
         variant: "destructive",
-      })
+      });
     }
 
-    const site = await response.json()
+    const site = await response.json();
 
     // This forces a cache invalidation.
-    router.refresh()
+    router.refresh();
 
-    router.push(`/sites/${site.id}`)
+    router.push(`/sites/${site.id}`);
   }
 
   return (
@@ -148,5 +148,5 @@ export function SiteCreateButton({
         </AlertDialogContent>
       </AlertDialog>
     </>
-  )
+  );
 }
