@@ -4,6 +4,14 @@ Press aims to be a universal CMS that you can use for creating content for your 
 
 With tenant capabilities, it allows you to create content for a number of sites with a multi-user, multi-site structure. Alongside that, it fully supports site deployments and site management with CloudFlare and Vercel.
 
+## Tech
+
+- [Using the Next.JS Framework (App Directory)](https://nextjs.org/)
+- [Components from shadcn](https://ui.shadcn.com/)
+- [Hosted on Vercel](https://vercel.com/)
+- [Emails with Resend](https://resend.com/)
+- [Database with PlanetScale](https://planetscale.com/)
+
 ## TODO
 
 - [x] Implement models for CMS
