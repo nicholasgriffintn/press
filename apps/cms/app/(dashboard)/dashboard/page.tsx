@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { Site } from "@prisma/client"
 
 
 
@@ -10,10 +11,6 @@ import { DashboardHeader } from "@/components/header";
 import { DashboardShell } from "@/components/shell";
 import { SiteCreateButton } from "@/components/site-create-button";
 import { SiteItem } from "@/components/site-item";
-
-
-
-
 
 
 
@@ -47,26 +44,26 @@ export default async function DashboardPage() {
     },
   })
 
+  const sites: Site[] = users.reduce((prev, next) => {
+    const site = next.TenantUser.map(
+      (tenantUser) => tenantUser.tenant.Site
+    ).flat()
+
+    if (site.length) {
+      return [...site, ...prev]
+    }
+
+    return prev
+  }, [])
+
   return (
     <DashboardShell>
       <DashboardHeader heading="Dashboard" text="Select a site to manage." />
       <div>
-        {users?.length ? (
+        {sites?.length ? (
           <div className="divide-y divide-border rounded-md border">
-            {users.map((user) => {
-              return (
-                <>
-                  {user.TenantUser.map((tenantUser) => {
-                    return (
-                      <>
-                        {tenantUser.tenant.Site.map((site) => {
-                          return <SiteItem site={site} />
-                        })}
-                      </>
-                    )
-                  })}
-                </>
-              )
+            {sites.map((site) => {
+              return <SiteItem site={site} />
             })}
           </div>
         ) : (
