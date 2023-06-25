@@ -77,7 +77,11 @@ export default async function SitesPage({ params }: SitesPageProps) {
         heading={site.name}
         text={site.description || "Welcome to your site's dashboard!"}
       >
-        <PostCreateButton contentType={contentType} contentStatus={contentStatus} siteId={site.id} />
+        <PostCreateButton
+          contentType={contentType}
+          contentStatus={contentStatus}
+          siteId={site.id}
+        />
       </DashboardHeader>
       <div>
         {posts?.length ? (
@@ -96,7 +100,12 @@ export default async function SitesPage({ params }: SitesPageProps) {
               You don&apos;t have any {contentType.title.toLowerCase()}s yet.
               Start creating content.
             </EmptyPlaceholder.Description>
-            <PostCreateButton variant="outline" contentType={contentType} contentStatus={contentStatus} siteId={site.id} />
+            <PostCreateButton
+              variant="outline"
+              contentType={contentType}
+              contentStatus={contentStatus}
+              siteId={site.id}
+            />
           </EmptyPlaceholder>
         )}
       </div>
