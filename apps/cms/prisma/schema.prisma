@@ -106,19 +106,6 @@ model AuditLog {
   @@map(name: "auditlogs")
 }
 
-model Provider {
-  id        String   @id @default(cuid())
-  name      String   @default("default")
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  updatedAt DateTime @default(now()) @map(name: "updated_at")
-  createdBy String?  @map(name: "created_by")
-  updatedBy String?  @map(name: "updated_by")
-  Tenant    Tenant[]
-
-  @@unique([name])
-  @@map(name: "providers")
-}
-
 model Tenant {
   id                     String       @id @default(cuid())
   name                   String       @db.VarChar(255)
@@ -128,16 +115,14 @@ model Tenant {
   stripePriceId          String?      @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime?    @map(name: "stripe_current_period_end")
   createdAt              DateTime     @default(now()) @map(name: "created_at")
-  updatedAt              DateTime     @default(now()) @map(name: "updated_at")
+  updatedAt              DateTime?     @default(now()) @map(name: "updated_at")
   createdBy              String       @map(name: "created_by")
-  updatedBy              String       @map(name: "updated_by")
+  updatedBy              String?      @map(name: "updated_by")
+  providerName           String       @default("default")
   users                  TenantUser[]
   Device                 Device[]
   Site                   Site[]
-  providerName           String
-
-  provider Provider @relation(fields: [providerName], references: [name])
-  File     File[]
+  File                   File[]
 
   @@unique([name, url])
   @@map(name: "tenants")
@@ -147,10 +132,15 @@ enum Role {
   admin
 }
 
+enum VerificationStatus {
+  verified
+  not_verified
+}
+
 model TenantUser {
   id              String   @id @default(cuid())
-  invitationToken String   @db.VarChar(255)
-  status          String   @db.VarChar(255)
+  invitationToken String?  @db.VarChar(255)
+  status          VerificationStatus @default(not_verified)
   role            Role
   tenantId        String
   userId          String
@@ -196,8 +186,7 @@ model File {
   updatedAt   DateTime @default(now()) @map(name: "updated_at")
   createdBy   String   @map(name: "created_by")
   updatedBy   String   @map(name: "updated_by")
-
-  tenant Tenant @relation(fields: [tenantId], references: [id])
+  tenant      Tenant   @relation(fields: [tenantId], references: [id])
 
   @@map(name: "files")
 }
@@ -546,23 +535,23 @@ model Content {
   id String @id @default(cuid())
 
   title            String
-  dueDate          DateTime?      @map(name: "due_date")
-  publishDate      DateTime?      @map(name: "publish_date")
+  dueDate          DateTime?     @map(name: "due_date")
+  publishDate      DateTime?     @map(name: "publish_date")
   content          Json?
-  customFieldsData Json?          @map("custom_fields_data")
-  readOnly         Boolean        @default(false) @map(name: "read_only")
-  published        Boolean        @default(false)
-  private          Boolean        @default(false)
-  draft            Boolean        @default(false)
-  showInMenu       Boolean        @default(false) @map("show_in_menu")
+  customFieldsData Json?         @map("custom_fields_data")
+  readOnly         Boolean       @default(false) @map(name: "read_only")
+  published        Boolean       @default(false)
+  private          Boolean       @default(false)
+  draft            Boolean       @default(false)
+  showInMenu       Boolean       @default(false) @map("show_in_menu")
   seo              Json?
   authorId         String
   siteId           String
-  featuredImageUrl String?        @db.VarChar(1024)
+  featuredImageUrl String?       @db.VarChar(1024)
   status           ContentStatus @relation(fields: [contentStatusId], references: [id])
   type             ContentType   @relation(fields: [contentTypeId], references: [id])
 
-  site         Site        @relation(fields: [siteId], references: [id])
+  site         Site         @relation(fields: [siteId], references: [id])
   Compliance   Compliance[]
   notes        Note[]
   tasks        Task[]
