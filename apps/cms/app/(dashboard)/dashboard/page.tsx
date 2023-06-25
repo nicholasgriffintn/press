@@ -20,7 +20,7 @@ export default async function DashboardPage() {
     redirect(authOptions?.pages?.signIn || "/login")
   }
 
-  const users = await db.user.findMany({
+  const userInfo = await db.user.findUnique({
     where: {
       id: user.id,
     },
@@ -37,16 +37,8 @@ export default async function DashboardPage() {
     },
   })
 
-  const sites = users.reduce((prev, next) => {
-    const site = next.TenantUser.map(
-      (tenantUser) => tenantUser.tenant.Site
-    ).flat()
-
-    if (site.length) {
-      return [...site, ...prev]
-    }
-
-    return prev
+  const sites = userInfo?.TenantUser.reduce((prev, next) => {
+    return [...next.tenant.Site, ...prev]
   }, [])
 
   return (
