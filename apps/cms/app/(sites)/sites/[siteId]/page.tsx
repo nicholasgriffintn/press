@@ -35,9 +35,30 @@ export default async function SitesPage({ params }: SitesPageProps) {
     notFound()
   }
 
+  const contentType = await db.contentType.findFirst({
+    where: {
+      siteId: site.id,
+    },
+  })
+
+  if (!contentType) {
+    notFound()
+  }
+
+  const contentStatus = await db.contentStatus.findFirst({
+    where: {
+      siteId: site.id,
+    },
+  })
+
+  if (!contentStatus) {
+    notFound()
+  }
+
   const posts = await db.content.findMany({
     where: {
       siteId: site.id,
+      contentTypeId: contentType.id,
     },
     select: {
       id: true,
@@ -56,7 +77,7 @@ export default async function SitesPage({ params }: SitesPageProps) {
         heading={site.name}
         text={site.description || "Welcome to your site's dashboard!"}
       >
-        <PostCreateButton />
+        <PostCreateButton contentType={contentType} contentStatus={contentStatus} siteId={site.id} />
       </DashboardHeader>
       <div>
         {posts?.length ? (
@@ -68,11 +89,14 @@ export default async function SitesPage({ params }: SitesPageProps) {
         ) : (
           <EmptyPlaceholder>
             <EmptyPlaceholder.Icon name="post" />
-            <EmptyPlaceholder.Title>No posts created</EmptyPlaceholder.Title>
+            <EmptyPlaceholder.Title>
+              No {contentType.title.toLowerCase()}s created
+            </EmptyPlaceholder.Title>
             <EmptyPlaceholder.Description>
-              You don&apos;t have any posts yet. Start creating content.
+              You don&apos;t have any {contentType.title.toLowerCase()}s yet.
+              Start creating content.
             </EmptyPlaceholder.Description>
-            <PostCreateButton variant="outline" />
+            <PostCreateButton variant="outline" contentType={contentType} contentStatus={contentStatus} siteId={site.id} />
           </EmptyPlaceholder>
         )}
       </div>

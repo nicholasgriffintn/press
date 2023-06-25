@@ -1,11 +1,17 @@
-import { Role, VerificationStatus } from "@prisma/client"
-import { getServerSession } from "next-auth/next"
-import * as z from "zod"
+import { Role, VerificationStatus } from "@prisma/client";
+import { getServerSession } from "next-auth/next";
+import * as z from "zod";
 
-import { authOptions } from "@/lib/auth"
-import { db } from "@/lib/db"
-import { RequiresProPlanError } from "@/lib/exceptions"
-import { getUserSubscriptionPlan } from "@/lib/subscription"
+
+
+import { authOptions } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { RequiresProPlanError } from "@/lib/exceptions";
+import { getUserSubscriptionPlan } from "@/lib/subscription";
+
+
+
+
 
 const tenantCreateSchema = z.object({
   name: z.string(),
@@ -30,7 +36,12 @@ export async function GET() {
           include: {
             tenant: {
               include: {
-                Site: true,
+                Site: {
+                  include: {
+                    ContentType: true,
+                    ContentStatus: true,
+                  },
+                },
               },
             },
           },
@@ -59,13 +70,35 @@ export async function POST(req: Request) {
     // If user is on a free plan.
     // Check if user has reached limit of 1 tenant.
     if (!subscriptionPlan?.isPro) {
-      const count = await db.tenantUser.count({
+      const users = await db.user.findMany({
         where: {
-          userId: user.id,
+          id: user.id,
+        },
+        include: {
+          TenantUser: {
+            include: {
+              tenant: {
+                include: {
+                  Site: true,
+                },
+              },
+            },
+          },
         },
       })
+      const sites = users.reduce((prev, next) => {
+        const site = next.TenantUser.map(
+          (tenantUser) => tenantUser.tenant.Site
+        ).flat()
 
-      if (count >= 1) {
+        if (site.length) {
+          return [...site, ...prev]
+        }
+
+        return prev
+      }, [])
+
+      if (sites.length >= 1) {
         throw new RequiresProPlanError()
       }
     }
@@ -110,7 +143,7 @@ export async function POST(req: Request) {
       },
     })
 
-    db.contentStatus.create({
+    await db.contentStatus.create({
       data: {
         siteId: site.id,
         name: "Published",
@@ -122,7 +155,7 @@ export async function POST(req: Request) {
       },
     })
 
-    db.contentType.create({
+    await db.contentType.create({
       data: {
         siteId: site.id,
         title: "Post",

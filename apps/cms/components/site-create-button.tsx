@@ -1,9 +1,7 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { useRouter } from "next/navigation";
-
-
+import * as React from "react"
+import { useRouter } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import {
@@ -17,6 +15,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 
@@ -106,8 +106,8 @@ export function SiteCreateButton({
               Fill in the form below to create your new site:
             </AlertDialogDescription>
             <>
-              <label htmlFor="site-name">Name:</label>
-              <input
+              <Label htmlFor="site-name">Name</Label>
+              <Input
                 id="site-name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -115,8 +115,8 @@ export function SiteCreateButton({
               />
             </>
             <>
-              <label htmlFor="site-url">URL:</label>
-              <input
+              <Label htmlFor="site-url">URL</Label>
+              <Input
                 id="site-url"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}

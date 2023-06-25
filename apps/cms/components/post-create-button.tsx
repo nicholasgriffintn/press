@@ -1,18 +1,26 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import { useRouter } from "next/navigation"
+import { ContentStatus, ContentType } from "@prisma/client"
 
 import { cn } from "@/lib/utils"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 
-interface PostCreateButtonProps extends ButtonProps {}
+interface PostCreateButtonProps extends ButtonProps {
+  contentType: ContentType
+  contentStatus: ContentStatus
+  siteId: string
+}
 
 export function PostCreateButton({
   className,
   variant,
+  contentType,
+  contentStatus,
+  siteId,
   ...props
 }: PostCreateButtonProps) {
   const router = useRouter()
@@ -28,6 +36,9 @@ export function PostCreateButton({
       },
       body: JSON.stringify({
         title: "Untitled Post",
+        siteId,
+        contentTypeId: contentType.id,
+        contentStatusId: contentStatus.id,
       }),
     })
 
@@ -75,7 +86,7 @@ export function PostCreateButton({
       ) : (
         <Icons.add className="mr-2 h-4 w-4" />
       )}
-      New post
+      New {contentType.title}
     </button>
   )
 }
