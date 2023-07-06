@@ -17,9 +17,14 @@ With tenant capabilities, it allows you to create content for a number of sites 
 
 ## TODO
 
-- [x] Implement models for CMS
-- [ ] Implement multi tenant structure
-- [ ] Move billing to tenants
+- [ ] Move away from Vercel Blob storage, or make it configurable to local if preferred (future S3 compat)
+- [ ] Configure database to include all the other fields we need
+- [ ] Set up sites to be configured with Vercel or CloudFlare
+- [ ] Remove upstash for something a little more configurable, if at all
+- [ ] Remove `avatar.vercel.sh`, swap out for something else
+- [ ] The stats on the dashboard should actually get the stats or be removed, again configurable with Vercel or CloudFlare
+- [ ] Analytics across the CMS should be configurable, turn it off, use vercel or use cloudflare, maybe something else
+- [ ] Add billing for tenants
 - [ ] Implement audit logs
 - [ ] Implement flags
 - [ ] Implement content creation with statuses, types and workflows
