@@ -5,6 +5,7 @@ export const env = createEnv({
   server: {
     NEXTAUTH_URL: z.string().url().optional(),
     NEXTAUTH_SECRET: z.string().min(1),
+    REDIRECT_TO_CUSTOM_DOMAIN_IF_EXISTS: z.string().optional(),
     BLOB_READ_WRITE_TOKEN: z.string().optional(),
     AUTH_BEARER_TOKEN: z.string().min(1),
     PROJECT_ID_VERCEL: z.string().min(1),
@@ -23,10 +24,13 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_APP_URL: z.string().min(1),
     NEXT_PUBLIC_ROOT_DOMAIN: z.string().min(1),
+    NEXT_PUBLIC_VERCEL_ENV: z.string().optional(),
   },
   runtimeEnv: {
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    REDIRECT_TO_CUSTOM_DOMAIN_IF_EXISTS:
+      process.env.REDIRECT_TO_CUSTOM_DOMAIN_IF_EXISTS,
     BLOB_READ_WRITE_TOKEN: process.env.BLOB_READ_WRITE_TOKEN,
     AUTH_BEARER_TOKEN: process.env.AUTH_BEARER_TOKEN,
     PROJECT_ID_VERCEL: process.env.PROJECT_ID_VERCEL,
@@ -42,6 +46,7 @@ export const env = createEnv({
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
     STRIPE_PRO_MONTHLY_PLAN_ID: process.env.STRIPE_PRO_MONTHLY_PLAN_ID,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
-    NEXT_PUBLIC_ROOT_DOMAIN: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+    NEXT_PUBLIC_ROOT_DOMAIN: process.env.NEXT_PUBLIC_ROOT_DOMAIN,
+    NEXT_PUBLIC_VERCEL_ENV: process.env.NEXT_PUBLIC_VERCEL_ENV,
   },
-})
+});
