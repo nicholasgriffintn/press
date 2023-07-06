@@ -1,6 +1,5 @@
 "use server";
 
-import { signIn } from "next-auth/react";
 import { revalidateTag } from "next/cache";
 import { put } from "@vercel/blob";
 import { customAlphabet } from "nanoid";
@@ -22,21 +21,6 @@ const nanoid = customAlphabet(
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
   7
 ); // 7-character random string
-
-export const loginUser = async (formData: FormData, callbackUrl: string) => {
-  const email = formData.get("email") as string;
-
-  try {
-    const response = await signIn("email", {
-      email: email.toLowerCase(),
-      redirect: false,
-      callbackUrl: callbackUrl,
-    });
-    return response;
-  } catch (error: any) {
-    return error.message || "Internal Server Error";
-  }
-};
 
 export const createSite = async (formData: FormData) => {
   const session = await getSession();

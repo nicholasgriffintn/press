@@ -8,8 +8,8 @@ import clsx from "clsx";
 export const metadata: Metadata = {
   title: "Press by Nicholas Griffin",
   description:
-    "Create a fullstack application with multi-tenancy and custom domains support using Next.js, Prisma, and PostgreSQL",
-  icons: ["https://vercel.pub/favicon.ico"],
+    "A side project that aims to be a universal CMS that users can use for creating content and managing their site.",
+  icons: ["https://press.nicholasgriffin.dev/favicon.ico"],
 };
 
 export default function RootLayout({

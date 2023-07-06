@@ -9,7 +9,7 @@ export default async function Sitemap() {
     headersList
       .get("host")
       ?.replace(".localhost:3000", `.${env.NEXT_PUBLIC_ROOT_DOMAIN}`) ??
-    "vercel.pub";
+    "press.nicholasgriffin.dev";
 
   const posts = await getPostsForSite(domain);
 

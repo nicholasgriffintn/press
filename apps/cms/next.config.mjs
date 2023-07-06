@@ -11,7 +11,12 @@ const nextConfig = {
     serverComponentsExternalPackages: ["@prisma/client"],
   },
   images: {
-    domains: ["avatars.githubusercontent.com"],
+    domains: [
+      "avatars.githubusercontent.com",
+      "avatar.vercel.sh",
+      "press.nicholasgriffin.dev",
+      "cdn.nicholasgriffin.dev",
+    ],
   },
   reactStrictMode: false,
 };

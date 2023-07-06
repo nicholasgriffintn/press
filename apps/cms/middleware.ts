@@ -4,7 +4,9 @@ import { getToken } from "next-auth/jwt";
 import { env } from "@/env.mjs";
 
 export const config = {
-  matcher: ["/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)"],
+  matcher: [
+    "/((?!privacy|terms|api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)",
+  ],
 };
 
 export default async function middleware(req: NextRequest) {

@@ -31,8 +31,8 @@ export const authOptions: NextAuthOptions = {
           from: provider.from as string,
           to: identifier,
           subject: user?.emailVerified
-            ? `Sign into ${siteConfig.name}`
-            : `Welcome to ${siteConfig.name}!`,
+            ? `Sign into Press`
+            : `Welcome to Press!`,
           react: <Email url={url} />,
         });
       },

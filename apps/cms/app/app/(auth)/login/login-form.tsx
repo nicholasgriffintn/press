@@ -1,5 +1,6 @@
 "use client";
 
+import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
@@ -8,29 +9,34 @@ import clsx from "clsx";
 import va from "@vercel/analytics";
 
 import LoadingDots from "@/components/icons/loading-dots";
-import { loginUser } from "@/lib/actions";
 
 export default function LoginForm({}) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const callbackUrl = searchParams?.get("from") || "/dashboard";
+  const callbackUrl = searchParams?.get("from") || "/";
 
   return (
     <form
-      action={async (data: FormData) =>
-        loginUser(data, callbackUrl).then((res) => {
-          if (res.ok) {
-            va.track("User logged in");
-            router.push(`/`);
-            toast.success(
-              `We sent a login link to your email. Be sure to check your spam too.`
-            );
-          } else {
-            toast.error("Your sign in request failed. Please try again.");
-          }
-        })
-      }
+      action={async (data: FormData) => {
+        const email = data.get("email") as string;
+
+        const loginResponse = await signIn("email", {
+          email: email.toLowerCase(),
+          redirect: false,
+          callbackUrl: callbackUrl,
+        });
+
+        if (loginResponse?.ok) {
+          va.track("User logged in");
+          router.push(`/`);
+          toast.success(
+            `We sent a login link to your email. Be sure to check your spam too.`
+          );
+        } else {
+          toast.error("Your sign in request failed. Please try again.");
+        }
+      }}
       className="dark:text-white"
     >
       <div>
