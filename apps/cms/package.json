@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "prisma generate && next dev",
-    "deploy:prisma": "prisma generate && prisma db push",
-    "build": "pnpm deploy:prisma && next build",
+    "deploy:db": "prisma generate && prisma db push",
+    "build": "next build",
     "format:write": "prettier --write \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "format": "prettier --loglevel warn --write \"**/*.{css,ts,js,json,jsx,tsx,md,scss}\"",
     "format:check": "prettier --check \"**/*.{css,ts,js,json,jsx,tsx,md,scss}\"",
