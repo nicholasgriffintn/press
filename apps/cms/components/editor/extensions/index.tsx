@@ -70,7 +70,7 @@ export const TiptapExtensions = [
 
             tr.insert(start - 1, this.type.create(attributes)).delete(
               tr.mapping.map(start),
-              tr.mapping.map(end),
+              tr.mapping.map(end)
             );
           },
         }),
@@ -118,6 +118,7 @@ export const TiptapExtensions = [
     nested: true,
   }),
   Markdown.configure({
+    html: false,
     linkify: true,
     transformCopiedText: true,
     transformPastedText: true,

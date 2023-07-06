@@ -20,12 +20,7 @@ export async function generateMetadata({
   if (!data) {
     return null;
   }
-  const {
-    name: title,
-    description,
-    image,
-    logo,
-  } = data as {
+  const { name: title, description } = data as {
     name: string;
     description: string;
     image: string;
@@ -38,16 +33,15 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      images: [image],
+      images: [],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [image],
-      creator: "@vercel",
+      images: [],
     },
-    icons: [logo],
+    icons: [],
     metadataBase: new URL(`https://${params.domain}`),
   };
 }
@@ -97,7 +91,6 @@ export default async function SiteLayout({
     notFound();
   }
 
-  // Optional: Redirect to custom domain if it exists
   if (
     domain.endsWith(`.${env.NEXT_PUBLIC_ROOT_DOMAIN}`) &&
     data.customDomain &&
@@ -112,12 +105,14 @@ export default async function SiteLayout({
         <div className="mx-auto flex h-full max-w-screen-xl items-center justify-center space-x-5 px-10 sm:px-20">
           <Link href="/" className="flex items-center justify-center">
             <div className="inline-block h-8 w-8 overflow-hidden rounded-full align-middle">
-              <Image
-                alt={data.name || ""}
-                height={40}
-                src={data.logo || ""}
-                width={40}
-              />
+              {data.logo ? (
+                <Image
+                  alt={data.name || ""}
+                  height={40}
+                  src={data.logo || ""}
+                  width={40}
+                />
+              ) : null}
             </div>
             <span className="ml-3 inline-block truncate font-title font-medium">
               {data.name}

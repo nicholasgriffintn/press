@@ -64,7 +64,9 @@ export default async function SitePostPage({
           href={
             data.site?.user?.username
               ? `https://twitter.com/${data.site.user.username}`
-              : `https://github.com/${data.site?.user?.gh_username}`
+              : data.site?.user?.gh_username
+              ? `https://github.com/${data.site?.user?.gh_username}`
+              : "https://github.com/nicholasgriffintn"
           }
           rel="noreferrer"
           target="_blank"

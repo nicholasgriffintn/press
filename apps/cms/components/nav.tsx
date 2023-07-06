@@ -28,7 +28,7 @@ import { Icons } from "@/components/icons";
 const externalLinks = [
   {
     name: "Star on GitHub",
-    href: "https://github.com/nicholasgriffin/press",
+    href: "https://github.com/nicholasgriffintn/press",
     icon: <Github width={18} />,
   },
   {

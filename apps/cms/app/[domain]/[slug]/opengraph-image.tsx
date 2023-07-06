@@ -24,7 +24,8 @@ export default async function PostOG({
     ? domain.replace(`.${env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
     : null;
 
-  const response = await conn.execute`
+  const response = [
+    await conn.execute(`
   SELECT post.title, post.description, post.image, "user".name as "authorName", "user".image as "authorImage"
   FROM "Post" AS post 
   INNER JOIN "Site" AS site ON post."siteId" = site.id 
@@ -36,7 +37,10 @@ export default async function PostOG({
     )
     AND post.slug = ${slug}
   LIMIT 1;
-`;
+`),
+  ];
+
+  console.log(response);
 
   const data = response.rows[0];
 

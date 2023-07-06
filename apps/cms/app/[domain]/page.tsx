@@ -4,7 +4,6 @@ import BlurImage from "@/components/blur-image";
 import { placeholderBlurhash, toDateString } from "@/lib/utils";
 import BlogCard from "@/components/blog-card";
 import { getPostsForSite, getSiteData } from "@/lib/fetchers";
-import Image from "next/image";
 
 export default async function SiteHomePage({
   params,
@@ -33,7 +32,7 @@ export default async function SiteHomePage({
                   className="h-full w-full object-cover group-hover:scale-105 group-hover:duration-300"
                   width={1300}
                   height={630}
-                  placeholder="blur"
+                  placeholder={posts[0].imageBlurhash ? "blur" : undefined}
                   src={posts[0].image ?? "/placeholder.png"}
                 />
               </div>

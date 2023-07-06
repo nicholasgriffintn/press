@@ -118,8 +118,11 @@ export async function getPostData(domain: string, slug: string) {
 }
 
 async function getMdxSource(postContents: string) {
+  const content = postContents
+    ? postContents.replaceAll(/<(https?:\/\/\S+)>/g, "[$1]($1)")
+    : "";
   // Serialize the content string into MDX
-  const mdxSource = await serialize(postContents, {
+  const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [replaceTweets, () => replaceExamples(prisma)],
     },
