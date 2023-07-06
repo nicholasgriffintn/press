@@ -61,9 +61,7 @@ export default function DomainConfiguration({ domain }: { domain: string }) {
               <p className="mt-2 font-mono text-sm">
                 {txtVerification.domain.slice(
                   0,
-                  txtVerification.domain.length -
-                    domainJson.apexName.length -
-                    1,
+                  txtVerification.domain.length - domainJson.apexName.length - 1
                 )}
               </p>
             </div>

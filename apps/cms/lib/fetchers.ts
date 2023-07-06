@@ -19,7 +19,7 @@ export async function getSiteData(domain: string) {
     {
       revalidate: 900,
       tags: [`${domain}-metadata`],
-    },
+    }
   )();
 }
 
@@ -54,7 +54,7 @@ export async function getPostsForSite(domain: string) {
     {
       revalidate: 900,
       tags: [`${domain}-posts`],
-    },
+    }
   )();
 }
 
@@ -113,7 +113,7 @@ export async function getPostData(domain: string, slug: string) {
     {
       revalidate: 900,
       tags: [`${domain}-${slug}`],
-    },
+    }
   )();
 }
 

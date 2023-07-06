@@ -31,7 +31,7 @@ export default function Uploader() {
         }
       }
     },
-    [setData],
+    [setData]
   );
 
   const [saving, setSaving] = useState(false);
@@ -69,7 +69,7 @@ export default function Uploader() {
                     </a>
                   </p>
                 </div>
-              </div>,
+              </div>
             );
           } else {
             const error = await res.text();
