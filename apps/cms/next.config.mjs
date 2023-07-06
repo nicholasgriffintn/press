@@ -14,6 +14,7 @@ const nextConfig = {
     domains: [
       "avatars.githubusercontent.com",
       "avatar.vercel.sh",
+      "www.google.com",
       "press.nicholasgriffin.dev",
       "cdn.nicholasgriffin.dev",
       "nicholasgriffin.dev",
