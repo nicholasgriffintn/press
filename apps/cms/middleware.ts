@@ -1,52 +1,43 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
-import { withAuth } from "next-auth/middleware";
 
-export default withAuth(
-  async function middleware(req) {
-    const token = await getToken({ req });
-    const isAuth = !!token;
-    const isAuthPage =
-      req.nextUrl.pathname.startsWith("/login") ||
-      req.nextUrl.pathname.startsWith("/register");
-
-    if (isAuthPage) {
-      if (isAuth) {
-        return NextResponse.redirect(new URL("/dashboard", req.url));
-      }
-
-      return null;
-    }
-
-    if (!isAuth) {
-      let from = req.nextUrl.pathname;
-      if (req.nextUrl.search) {
-        from += req.nextUrl.search;
-      }
-
-      return NextResponse.redirect(
-        new URL(`/login?from=${encodeURIComponent(from)}`, req.url)
-      );
-    }
-  },
-  {
-    callbacks: {
-      async authorized() {
-        // This is a work-around for handling redirect on auth pages.
-        // We return true here so that the middleware function above
-        // is always called.
-        return true;
-      },
-    },
-  }
-);
+import { env } from "@/env.mjs";
 
 export const config = {
-  matcher: [
-    "/dashboard/:path*",
-    "/editor/:path*",
-    "/sites/:path*",
-    "/login",
-    "/register",
-  ],
+  matcher: ["/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)"],
 };
+
+export default async function middleware(req: NextRequest) {
+  const url = req.nextUrl;
+
+  const hostname = req.headers
+    .get("host")!
+    .replace(".localhost:3000", `.${env.NEXT_PUBLIC_ROOT_DOMAIN}`);
+
+  const path = url.pathname;
+
+  if (hostname == `app.${env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
+    const session = await getToken({ req });
+    if (!session && path !== "/login") {
+      return NextResponse.redirect(new URL("/login", req.url));
+    } else if (session && path == "/login") {
+      return NextResponse.redirect(new URL("/", req.url));
+    }
+    return NextResponse.rewrite(
+      new URL(`/app${path === "/" ? "" : path}`, req.url),
+    );
+  }
+
+  if (
+    hostname === "localhost:3000" ||
+    hostname === env.NEXT_PUBLIC_ROOT_DOMAIN
+  ) {
+    return NextResponse.redirect(
+      hostname === "localhost:3000"
+        ? "http://app.localhost:3000"
+        : "https://app.press.nicholasgriffin.dev",
+    );
+  }
+
+  return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
+}
