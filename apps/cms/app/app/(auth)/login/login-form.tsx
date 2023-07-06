@@ -36,6 +36,8 @@ export default function LoginForm({}) {
       <div>
         <label htmlFor="email">Email</label>
         <input
+          id="email"
+          autoComplete="email"
           name="email"
           type="text"
           required
