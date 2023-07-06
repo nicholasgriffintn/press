@@ -85,7 +85,10 @@ const getSuggestionItems = ({ query }: { query: string }) => {
       icon: <MessageSquarePlus size={18} />,
       command: ({ editor, range }: CommandProps) => {
         editor.chain().focus().deleteRange(range).run();
-        window.open("https://github.com/vercel/platforms/issues", "_blank");
+        window.open(
+          "https://github.com/nicolasgriffintn/press/issues",
+          "_blank"
+        );
       },
     },
     {

@@ -71,9 +71,10 @@ export const updateSite = withSiteAuth(
       let response;
 
       if (key === "customDomain") {
-        if (value.includes("vercel.pub")) {
+        if (value.includes("press.nicholasgriffin.dev")) {
           return {
-            error: "Cannot use vercel.pub subdomain as your custom domain",
+            error:
+              "Cannot use press.nicholasgriffin.dev subdomain as your custom domain",
           };
 
           // if the custom domain is valid, we need to add it to Vercel

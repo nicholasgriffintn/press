@@ -49,7 +49,7 @@ const pages = [
 
 const referrers = [
   { name: "t.co", value: 453 },
-  { name: "vercel.com", value: 351 },
+  { name: "nicholasgriffin.dev", value: 351 },
   { name: "linkedin.com", value: 271 },
   { name: "google.com", value: 191 },
   {
