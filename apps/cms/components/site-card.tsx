@@ -18,7 +18,7 @@ export default function SiteCard({ data }: { data: Site }) {
           height={400}
           className="h-44 object-cover"
           src={data.image ?? "/placeholder.png"}
-          placeholder="blur"
+          placeholder={data.imageBlurhash ? "blur" : undefined}
           blurDataURL={data.imageBlurhash ?? placeholderBlurhash}
         />
         <div className="border-t border-stone-200 p-4 dark:border-stone-700">

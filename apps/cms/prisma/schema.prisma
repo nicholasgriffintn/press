@@ -75,8 +75,8 @@ model Post {
   description   String?  @db.Text
   content       String?  @db.Text
   slug          String   @default(cuid())
-  image         String?  @db.Text @default("")
-  imageBlurhash String?  @db.Text @default("")
+  image         String?  @db.Text @default("https://nicholasgriffin.dev/avatar.png")
+  imageBlurhash String?  @db.Text @default("https://nicholasgriffin.dev/avatar.png")
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   published     Boolean  @default(false)
@@ -94,10 +94,10 @@ model Site {
   id            String   @id @default(cuid())
   name          String?
   description   String?  @db.Text
-  logo          String?  @db.Text @default("")
+  logo          String?  @db.Text @default("https://nicholasgriffin.dev/avatar.png")
   font          String   @default("font-cal")
-  image         String?  @db.Text @default("")
-  imageBlurhash String?  @db.Text @default("")
+  image         String?  @db.Text @default("https://nicholasgriffin.dev/avatar.png")
+  imageBlurhash String?  @db.Text @default("https://nicholasgriffin.dev/avatar.png")
   subdomain     String?  @unique
   customDomain  String?  @unique
   message404    String?  @db.Text @default("Whoops! This page doesn't exist.")

@@ -16,6 +16,7 @@ const nextConfig = {
       "avatar.vercel.sh",
       "press.nicholasgriffin.dev",
       "cdn.nicholasgriffin.dev",
+      "nicholasgriffin.dev",
     ],
   },
   reactStrictMode: false,
