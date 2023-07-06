@@ -37,7 +37,7 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.redirect(
       hostname === "localhost:3000"
         ? "http://app.localhost:3000"
-        : "https://app.press.nicholasgriffin.dev",
+        : "https://app.relesed.com"
     );
   }
 

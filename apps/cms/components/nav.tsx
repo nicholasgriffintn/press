@@ -33,7 +33,7 @@ const externalLinks = [
   },
   {
     name: "View demo site",
-    href: "https://demo.press.nicholasgriffin.dev",
+    href: "https://demo.relesed.com",
     icon: <Layout width={18} />,
   },
 ];

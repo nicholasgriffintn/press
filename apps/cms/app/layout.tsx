@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Press by Nicholas Griffin",
   description:
     "A side project that aims to be a universal CMS that users can use for creating content and managing their site.",
-  icons: ["https://press.nicholasgriffin.dev/favicon.ico"],
+  icons: ["https://relesed.com/favicon.ico"],
 };
 
 export default function RootLayout({

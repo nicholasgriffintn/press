@@ -13,7 +13,7 @@ const nextConfig = {
       "avatars.githubusercontent.com",
       "avatar.vercel.sh",
       "www.google.com",
-      "press.nicholasgriffin.dev",
+      "relesed.com",
       "cdn.nicholasgriffin.dev",
       "nicholasgriffin.dev",
     ],
