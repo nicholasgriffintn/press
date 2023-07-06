@@ -7,11 +7,13 @@ With tenant capabilities, it allows you to create content for a number of sites 
 ## Tech
 
 - [Using the Next.JS Framework (App Directory)](https://nextjs.org/)
-- [Components from shadcn](https://ui.shadcn.com/)
 - [Auth with NextAuth.js](https://next-auth.js.org/)
 - [Hosted on Vercel](https://vercel.com/)
 - [Emails with Resend](https://resend.com/)
 - [Database with PlanetScale](https://planetscale.com/)
+- [Charts with Tremor](https://tremor.so/)
+- [Styling with Tailwind](https://tailwindcss.com/)
+- [Original template from Vercel](https://github.com/vercel/platforms)
 
 ## TODO
 
