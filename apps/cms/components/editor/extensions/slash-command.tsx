@@ -24,9 +24,10 @@ import {
   Code,
   CheckSquare,
 } from "lucide-react";
-import LoadingCircle from "@/components/icons/loading-circle";
 import { toast } from "sonner";
 import va from "@vercel/analytics";
+
+import LoadingCircle from "@/components/icons/loading-circle";
 import Magic from "@/components/icons/magic";
 import { handleImageUpload } from "../utils";
 

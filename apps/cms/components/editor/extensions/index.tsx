@@ -1,3 +1,4 @@
+import { InputRule } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
 import TiptapLink from "@tiptap/extension-link";
@@ -11,7 +12,6 @@ import TaskList from "@tiptap/extension-task-list";
 import { Markdown } from "tiptap-markdown";
 
 import SlashCommand from "./slash-command";
-import { InputRule } from "@tiptap/core";
 
 export const TiptapExtensions = [
   StarterKit.configure({
