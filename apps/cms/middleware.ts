@@ -30,16 +30,12 @@ export default async function middleware(req: NextRequest) {
     );
   }
 
-  if (
-    hostname === "localhost:3000" ||
-    hostname === env.NEXT_PUBLIC_ROOT_DOMAIN
-  ) {
-    return NextResponse.redirect(
-      hostname === "localhost:3000"
-        ? "http://app.localhost:3000"
-        : "https://app.relesed.com"
-    );
-  }
+  console.log(hostname);
 
-  return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
+  if (
+    hostname !== "localhost:3000" ||
+    hostname !== env.NEXT_PUBLIC_ROOT_DOMAIN
+  ) {
+    return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
+  }
 }

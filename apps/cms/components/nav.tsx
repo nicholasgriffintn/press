@@ -151,8 +151,12 @@ export default function Nav({ children }: { children: ReactNode }) {
       >
         <div className="grid gap-2">
           <div className="flex items-center space-x-2 rounded-lg px-2 py-1.5">
-            <Link href="/" className="pb-2 dark:text-white">
-              <Icons.logo className="dark:scale-110" />
+            <Link
+              href="/"
+              className="hidden items-center space-x-2 md:flex pb-2 dark:text-white"
+            >
+              <Icons.logo className="mx-auto h-6 w-6" />
+              <span className="hidden font-bold sm:inline-block">Press</span>
             </Link>
           </div>
           <div className="grid gap-1">

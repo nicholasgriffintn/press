@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Link from "next/link";
 
 import { Icons } from "@/components/icons";
 import LoginButton from "./login-button";
@@ -8,7 +9,9 @@ export default function LoginPage() {
   return (
     <div className="mx-5 border border-stone-200 py-10 dark:border-stone-700 sm:mx-auto sm:w-full sm:max-w-md sm:rounded-lg sm:shadow-md dark:text-white">
       <div className="p-4">
-        <Icons.logo className="mx-auto h-6 w-6" />
+        <Link href="/" className="hidden items-center space-x-2 md:flex">
+          <Icons.logo className="mx-auto h-6 w-6" />
+        </Link>
         <h1 className="mt-6 text-center font-cal text-3xl dark:text-white">
           Press by Nicholas Griffin
         </h1>
