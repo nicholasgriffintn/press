@@ -1,4 +1,6 @@
 import { ReactNode, Suspense } from "react";
+
+import "@/styles/dashboard.css";
 import Profile from "@/components/profile";
 import Nav from "@/components/nav";
 

@@ -1,3 +1,5 @@
+import { withContentlayer } from "next-contentlayer";
+
 import "./env.mjs";
 
 /**
@@ -13,7 +15,7 @@ const nextConfig = {
       "avatars.githubusercontent.com",
       "avatar.vercel.sh",
       "www.google.com",
-      "relesed.com",
+      "press.nicholasgriffin.dev",
       "cdn.nicholasgriffin.dev",
       "nicholasgriffin.dev",
     ],
@@ -21,4 +23,4 @@ const nextConfig = {
   reactStrictMode: false,
 };
 
-export default nextConfig;
+export default withContentlayer(nextConfig);

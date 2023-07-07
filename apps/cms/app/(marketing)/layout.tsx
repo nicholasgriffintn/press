@@ -1,5 +1,14 @@
 import Link from "next/link";
 
+import "@/styles/marketing.css";
+import "@/styles/mdx.css";
+import { marketingConfig } from "@/config/marketing";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { MainNav } from "@/components/main-nav";
+import { DocsSearch } from "@/components/search";
+import { SiteFooter } from "@/components/site-footer";
+
 interface MarketingLayoutProps {
   children: React.ReactNode;
 }
@@ -11,19 +20,27 @@ export default async function MarketingLayout({
     <div className="flex min-h-screen flex-col">
       <header className="container z-40 bg-background">
         <div className="flex h-20 items-center justify-between py-6">
+          <MainNav items={marketingConfig.mainNav} />
           <div className="flex flex-1 items-center space-x-4 sm:justify-end">
+            <div className="flex-1 sm:grow-0 hidden md:block">
+              <DocsSearch />
+            </div>
             <nav className="flex space-x-4">
-              <a
+              <Link
                 href={`//app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/login`}
-                className="inline-flex items-center justify-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-secondary text-secondary-foreground hover:bg-secondary/80 h-9 rounded-md px-4 dark:text-white"
+                className={cn(
+                  buttonVariants({ variant: "secondary", size: "sm" }),
+                  "px-4"
+                )}
               >
                 Login
-              </a>
+              </Link>
             </nav>
           </div>
         </div>
       </header>
       <main className="flex-1">{children}</main>
+      <SiteFooter />
     </div>
   );
 }
