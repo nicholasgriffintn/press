@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import { notFound, redirect } from "next/navigation";
 import { Metadata } from "next";
 
+import "@/styles/dashboard.css";
 import { env } from "@/env.mjs";
 import { getSiteData } from "@/lib/fetchers";
 import { fontMapper } from "@/styles/fonts";
