@@ -47,7 +47,10 @@ export default async function IndexPage() {
             can use for creating content and managing their site.
           </p>
           <div className="space-x-4">
-            <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
+            <Link
+              href={`//app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/login`}
+              className={cn(buttonVariants({ size: "lg" }))}
+            >
               Get Started
             </Link>
             <Link

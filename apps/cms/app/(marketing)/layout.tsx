@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import "@/styles/marketing.css";
+import "@/styles/mdx.css";
 import { marketingConfig } from "@/config/marketing";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -20,12 +22,12 @@ export default async function MarketingLayout({
         <div className="flex h-20 items-center justify-between py-6">
           <MainNav items={marketingConfig.mainNav} />
           <div className="flex flex-1 items-center space-x-4 sm:justify-end">
-            <div className="flex-1 sm:grow-0">
+            <div className="flex-1 sm:grow-0 hidden md:block">
               <DocsSearch />
             </div>
             <nav className="flex space-x-4">
               <Link
-                href="/login"
+                href={`//app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/login`}
                 className={cn(
                   buttonVariants({ variant: "secondary", size: "sm" }),
                   "px-4"

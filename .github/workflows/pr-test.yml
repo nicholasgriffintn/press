@@ -26,6 +26,10 @@ jobs:
       STRIPE_API_KEY: a-stripe-api-key
       STRIPE_WEBHOOK_SECRET: a-stripe-webhook-secret
       STRIPE_PRO_MONTHLY_PLAN_ID: a pro-plan-id
+      AUTH_BEARER_TOKEN: a-token
+      PROJECT_ID_VERCEL: an-id
+      TEAM_ID_VERCEL: an-id
+      NEXT_PUBLIC_ROOT_DOMAIN: localhost:3000
 
     steps:
       - name: Check out code

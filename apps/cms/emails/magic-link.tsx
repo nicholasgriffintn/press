@@ -48,7 +48,7 @@ export const Email = ({ url }: EmailProps) => (
         </Text>
         <Text style={footer}>
           <Link
-            href="https://press.nicholasgriffin.dev"
+            href="https://relesed.com"
             target="_blank"
             style={{ ...link, color: "#898989" }}
           >
