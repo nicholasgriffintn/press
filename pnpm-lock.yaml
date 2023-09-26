@@ -31,7 +31,7 @@ importers:
         version: 0.3.0(@ianvs/prettier-plugin-sort-imports@4.0.2)(prettier@2.8.8)
       turbo:
         specifier: latest
-        version: 1.10.6
+        version: 1.10.14
 
   apps/cms:
     dependencies:
@@ -304,8 +304,8 @@ importers:
         specifier: 7.32.2
         version: 7.32.2(eslint@8.43.0)
       eslint-plugin-tailwindcss:
-        specifier: 3.13.0
-        version: 3.13.0(tailwindcss@3.3.2)
+        specifier: 3.12.1
+        version: 3.12.1(tailwindcss@3.3.2)
       framer-motion:
         specifier: 10.12.17
         version: 10.12.17(react-dom@18.2.0)(react@18.2.0)
@@ -322,8 +322,8 @@ importers:
         specifier: 3.1.3
         version: 3.1.3(prettier@2.8.8)
       prism-react-renderer:
-        specifier: 2.0.5
-        version: 2.0.5(react@18.2.0)
+        specifier: 2.1.0
+        version: 2.1.0(react@18.2.0)
       prisma:
         specifier: 4.16.1
         version: 4.16.1
@@ -5823,8 +5823,8 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-tailwindcss@3.13.0(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-Fcep4KDRLWaK3KmkQbdyKHG0P4GdXFmXdDaweTIPcgOP60OOuWFbh1++dufRT28Q4zpKTKaHwTsXPJ4O/EjU2Q==}
+  /eslint-plugin-tailwindcss@3.12.1(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-LyIRV0rx6prTpJZsSCXSNJ34Yry3Nj9OJwvzh1xTsiG6+UCnAPW1Bx41s7vZzUDKMlwFgpUN9Me+NK12T4DHYg==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       tailwindcss: ^3.3.2
@@ -9103,8 +9103,8 @@ packages:
       js-beautify: 1.14.8
     dev: false
 
-  /prism-react-renderer@2.0.5(react@18.2.0):
-    resolution: {integrity: sha512-VHTC2ZhOImeC3/mu/3TkEuRCa1K+kTCZQeCkwvWzQa01/ahU3dibyxWf3XiPLuO4k/rGjSTea1lEsfza6fMofw==}
+  /prism-react-renderer@2.1.0(react@18.2.0):
+    resolution: {integrity: sha512-I5cvXHjA1PVGbGm1MsWCpvBCRrYyxEri0MC7/JbfIfYfcXAxHyO5PaUjs3A8H5GW6kJcLhTHxxMaOZZpRZD2iQ==}
     peerDependencies:
       react: '>=16.0.0'
     dependencies:
@@ -10466,65 +10466,64 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /turbo-darwin-64@1.10.6:
-    resolution: {integrity: sha512-s2Gc7i9Ud+H9GDcrGJjPIyscJfzDGQ6il4Sl2snfvwngJs4/TaqKuBoX3HNt/7F4NiFRs7ZhlLV1/Yu9zGBRhw==}
+  /turbo-darwin-64@1.10.14:
+    resolution: {integrity: sha512-I8RtFk1b9UILAExPdG/XRgGQz95nmXPE7OiGb6ytjtNIR5/UZBS/xVX/7HYpCdmfriKdVwBKhalCoV4oDvAGEg==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-arm64@1.10.6:
-    resolution: {integrity: sha512-tgl70t5PBLyRcNTdP9N6NjvdvQ5LUk8Z60JGUhBhnc+oCOdA4pltrDJNPyel3tQAXXt1dDpl8pp9vUrbwoVyGg==}
+  /turbo-darwin-arm64@1.10.14:
+    resolution: {integrity: sha512-KAdUWryJi/XX7OD0alOuOa0aJ5TLyd4DNIYkHPHYcM6/d7YAovYvxRNwmx9iv6Vx6IkzTnLeTiUB8zy69QkG9Q==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-64@1.10.6:
-    resolution: {integrity: sha512-h7eyAA3xtAVpamcYJYUwe0xm0LWdbv7/I7QiM09AZ67TTNpyUgqW8giFN3h793BHEQ2Rcnk9FNkpIbjWBbyamg==}
+  /turbo-linux-64@1.10.14:
+    resolution: {integrity: sha512-BOBzoREC2u4Vgpap/WDxM6wETVqVMRcM8OZw4hWzqCj2bqbQ6L0wxs1LCLWVrghQf93JBQtIGAdFFLyCSBXjWQ==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm64@1.10.6:
-    resolution: {integrity: sha512-8cZhOeLqu3QZ27yLd6bw4FNaB8y5pLdWeRLJeiWHkIb/cptKnRKJFP+keBJzJi8ovaMqdBpabrxiBRN2lhau5Q==}
+  /turbo-linux-arm64@1.10.14:
+    resolution: {integrity: sha512-D8T6XxoTdN5D4V5qE2VZG+/lbZX/89BkAEHzXcsSUTRjrwfMepT3d2z8aT6hxv4yu8EDdooZq/2Bn/vjMI32xw==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-64@1.10.6:
-    resolution: {integrity: sha512-qx5jcfCJodN1Mh0KtSVQau7pK8CxDvtif7+joPHI2HbQPAADgdUl0LHfA5tFHh6aWgfvhxbvIXqJd6v7Mqkj9g==}
+  /turbo-windows-64@1.10.14:
+    resolution: {integrity: sha512-zKNS3c1w4i6432N0cexZ20r/aIhV62g69opUn82FLVs/zk3Ie0GVkSB6h0rqIvMalCp7enIR87LkPSDGz9K4UA==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-arm64@1.10.6:
-    resolution: {integrity: sha512-vTQaRG3/s2XTreOBr6J9HKFtjzusvwGQg0GtuW2+9Z7fizdzP8MuhaDbN6FhKHcWC81PQPD61TBIKTVTsYOEZg==}
+  /turbo-windows-arm64@1.10.14:
+    resolution: {integrity: sha512-rkBwrTPTxNSOUF7of8eVvvM+BkfkhA2OvpHM94if8tVsU+khrjglilp8MTVPHlyS9byfemPAmFN90oRIPB05BA==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo@1.10.6:
-    resolution: {integrity: sha512-0/wbjw4HvmPP1abVWHTdeFRfCA9cn5oxCPP5bDixagLzvDgGWE3xfdlsyGmq779Ekr9vjtDPgC2Y4JlXEhyryw==}
+  /turbo@1.10.14:
+    resolution: {integrity: sha512-hr9wDNYcsee+vLkCDIm8qTtwhJ6+UAMJc3nIY6+PNgUTtXcQgHxCq8BGoL7gbABvNWv76CNbK5qL4Lp9G3ZYRA==}
     hasBin: true
-    requiresBuild: true
     optionalDependencies:
-      turbo-darwin-64: 1.10.6
-      turbo-darwin-arm64: 1.10.6
-      turbo-linux-64: 1.10.6
-      turbo-linux-arm64: 1.10.6
-      turbo-windows-64: 1.10.6
-      turbo-windows-arm64: 1.10.6
+      turbo-darwin-64: 1.10.14
+      turbo-darwin-arm64: 1.10.14
+      turbo-linux-64: 1.10.14
+      turbo-linux-arm64: 1.10.14
+      turbo-windows-64: 1.10.14
+      turbo-windows-arm64: 1.10.14
     dev: true
 
   /tw-to-css@0.0.11(ts-node@10.9.1):
