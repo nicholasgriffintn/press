@@ -90,7 +90,7 @@
     "react-textarea-autosize": "8.5.0",
     "resend": "0.15.3",
     "sharp": "0.32.1",
-    "shiki": "0.14.2",
+    "shiki": "0.14.5",
     "stripe": "12.10.0",
     "tailwind-merge": "1.13.2",
     "tailwindcss-animate": "1.0.6",
