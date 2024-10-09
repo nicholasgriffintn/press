@@ -94,7 +94,7 @@
     "stripe": "12.10.0",
     "tailwind-merge": "1.13.2",
     "tailwindcss-animate": "1.0.6",
-    "zod": "3.22.3"
+    "zod": "3.21.4"
   },
   "devDependencies": {
     "@commitlint/cli": "17.6.6",
@@ -111,7 +111,7 @@
     "eslint-config-next": "13.4.7",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-react": "7.32.2",
-    "eslint-plugin-tailwindcss": "3.12.1",
+    "eslint-plugin-tailwindcss": "3.17.5",
     "framer-motion": "10.12.17",
     "husky": "8.0.3",
     "mdast-util-toc": "6.1.1",
